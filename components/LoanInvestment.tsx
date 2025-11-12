@@ -2,7 +2,6 @@
 import React from "react";
 import NextLink from "next/link";
 import { Box, Container, Grid, Heading, Text, Image, Stack, Badge, GridItem } from "@chakra-ui/react";
-import { CreativeDivider } from "./CreativeDivider";
 
 export const LoanInvestment: React.FC = () => {
   return (
@@ -147,9 +146,6 @@ export const LoanInvestment: React.FC = () => {
           </GridItem>
         </Grid>
       </Container>
-      <Box mt="16">
-        <CreativeDivider color="#3B82F6" />
-      </Box>
     </Box>
   );
 };

@@ -1,6 +1,5 @@
 import React from "react";
 import { Box, Container, Grid, Heading, Text } from "@chakra-ui/react";
-import { CreativeDivider } from "./CreativeDivider";
 
 export const MissionVision: React.FC = () => {
   return (
@@ -56,9 +55,6 @@ export const MissionVision: React.FC = () => {
           </Box>
         </Grid>
       </Container>
-      <Box mt="-1">
-        <CreativeDivider color="#3B82F6" />
-      </Box>
     </Box>
   );
 };

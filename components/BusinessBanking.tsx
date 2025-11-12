@@ -2,7 +2,6 @@
 import React from "react";
 import NextLink from "next/link";
 import { Box, Container, Grid, Heading, Text, Image, Badge } from "@chakra-ui/react";
-import { CreativeDivider } from "./CreativeDivider";
 
 export const BusinessBanking: React.FC = () => {
   return (
@@ -113,9 +112,6 @@ export const BusinessBanking: React.FC = () => {
           </Box>
         </Grid>
       </Container>
-      <Box mt="16">
-        <CreativeDivider color="#3B82F6" flip />
-      </Box>
     </Box>
   );
 };

@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { Box, Container, Heading, Text, Input, Button, Flex } from "@chakra-ui/react";
+import { CreativeDivider } from "./CreativeDivider";
 
 export const Newsletter: React.FC = () => {
   const [email, setEmail] = useState("");
@@ -90,6 +91,9 @@ export const Newsletter: React.FC = () => {
           </Box>
         </Box>
       </Container>
+      <Box mt="16">
+        <CreativeDivider color="#3B82F6" />
+      </Box>
     </Box>
   );
 };

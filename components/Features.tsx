@@ -2,7 +2,6 @@
 
 import React from "react";
 import { Box, Container, Heading, Text, Flex, SimpleGrid, Badge } from "@chakra-ui/react";
-import { CreativeDivider } from "./CreativeDivider";
 
 interface Feature {
   title: string;
@@ -325,9 +324,6 @@ export const Features: React.FC = () => {
           </Flex>
         </Box>
       </Container>
-      <Box mt="16">
-        <CreativeDivider color="#3B82F6" />
-      </Box>
     </Box>
   );
 };

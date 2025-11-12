@@ -1,6 +1,5 @@
 import React from "react";
 import Link from "next/link";
-import { CreativeDivider } from "./CreativeDivider";
 
 export const PersonalBanking: React.FC = () => {
   return (
@@ -37,7 +36,6 @@ export const PersonalBanking: React.FC = () => {
           </div>
         </div>
       </div>
-      <CreativeDivider color="#3B82F6" flip />
     </section>
   );
 };

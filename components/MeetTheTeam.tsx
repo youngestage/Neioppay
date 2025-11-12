@@ -2,7 +2,6 @@
 
 import React from "react";
 import { Box, Container, Heading, Text, SimpleGrid, Image, Flex } from "@chakra-ui/react";
-import { CreativeDivider } from "./CreativeDivider";
 
 interface TeamMember {
   name: string;
@@ -127,9 +126,6 @@ export const MeetTheTeam: React.FC = () => {
           ))}
         </SimpleGrid>
       </Container>
-      <Box mt="16">
-        <CreativeDivider color="#3B82F6" />
-      </Box>
     </Box>
   );
 };
