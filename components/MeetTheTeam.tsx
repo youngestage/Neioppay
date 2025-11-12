@@ -93,8 +93,39 @@ const TeamMemberCard: React.FC<TeamMember> = ({ image, name, role }) => {
 
 export const MeetTheTeam: React.FC = () => {
   return (
-    <Box as="section" py={{ base: "16", sm: "20", md: "24" }} bg="white">
-      <Container maxW="7xl" px={{ base: 6, sm: 8 }}>
+    <Box
+      as="section"
+      py={{ base: "16", sm: "20", md: "24" }}
+      bgGradient="linear(to-b, brand.50, white)"
+      position="relative"
+      overflow="hidden"
+    >
+      {/* Background decorative elements */}
+      <Box position="absolute" inset="0" overflow="hidden" pointerEvents="none">
+        <Box
+          position="absolute"
+          top="10%"
+          right="10%"
+          w="64"
+          h="64"
+          bg="brand.light"
+          rounded="full"
+          filter="blur(60px)"
+          opacity="0.08"
+        />
+        <Box
+          position="absolute"
+          bottom="10%"
+          left="10%"
+          w="64"
+          h="64"
+          bg="brand.light"
+          rounded="full"
+          filter="blur(60px)"
+          opacity="0.08"
+        />
+      </Box>
+      <Container maxW="7xl" px={{ base: 6, sm: 8 }} position="relative" zIndex="10">
         <Box textAlign="center" mb={{ base: "12", sm: "16" }}>
           <Heading
             as="h2"

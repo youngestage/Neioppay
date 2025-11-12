@@ -90,12 +90,12 @@ export const Features: React.FC = () => {
   return (
     <Box
       as="section"
-      bgGradient="linear(to-b, white, blue.50)"
+      bgGradient="linear(to-b, brand.50, white, brand.50)"
       py={{ base: "20", lg: "28" }}
       position="relative"
       overflow="hidden"
     >
-      {/* Subtle background elements */}
+      {/* Enhanced background elements with secondary color */}
       <Box position="absolute" inset="0" overflow="hidden" pointerEvents="none">
         <Box
           position="absolute"
@@ -103,10 +103,10 @@ export const Features: React.FC = () => {
           right="0"
           w="96"
           h="96"
-          bg="blue.100"
+          bg="brand.light"
           rounded="full"
-          filter="blur(80px)"
-          opacity="0.15"
+          filter="blur(100px)"
+          opacity="0.12"
         />
         <Box
           position="absolute"
@@ -114,10 +114,22 @@ export const Features: React.FC = () => {
           left="0"
           w="96"
           h="96"
-          bg="blue.100"
+          bg="brand.light"
           rounded="full"
-          filter="blur(80px)"
-          opacity="0.15"
+          filter="blur(100px)"
+          opacity="0.12"
+        />
+        <Box
+          position="absolute"
+          top="50%"
+          left="50%"
+          transform="translate(-50%, -50%)"
+          w="128"
+          h="128"
+          bg="brand.light"
+          rounded="full"
+          filter="blur(120px)"
+          opacity="0.08"
         />
       </Box>
 

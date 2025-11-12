@@ -71,7 +71,13 @@ export const CardsSection: React.FC = () => {
             />
             </Box>
           </Box>
-          <NextLink href="#personal-account" passHref legacyBehavior>
+          <NextLink
+            href="https://play.google.com/store/apps/details?id=com.neiop.app"
+            target="_blank"
+            rel="noopener noreferrer"
+            passHref
+            legacyBehavior
+          >
             <Box
               as="a"
               display="inline-block"
@@ -92,8 +98,8 @@ export const CardsSection: React.FC = () => {
                   boxShadow: "var(--chakra-shadows-lg)",
                 },
               }}
-          >
-            Get A Personal Account
+            >
+              Get A Personal Account
             </Box>
           </NextLink>
         </Box>

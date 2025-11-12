@@ -3,8 +3,39 @@ import { Box, Container, Heading, Text } from "@chakra-ui/react";
 
 export const ProductOfferings: React.FC = () => {
   return (
-    <Box as="section" bg="white" py={{ base: "20", lg: "28" }}>
-      <Container maxW="7xl" px={{ base: 6, sm: 8, lg: 12 }}>
+    <Box
+      as="section"
+      bgGradient="linear(to-b, white, brand.50)"
+      py={{ base: "20", lg: "28" }}
+      position="relative"
+      overflow="hidden"
+    >
+      {/* Background decorative elements */}
+      <Box position="absolute" inset="0" overflow="hidden" pointerEvents="none">
+        <Box
+          position="absolute"
+          top="10%"
+          right="10%"
+          w="64"
+          h="64"
+          bg="brand.light"
+          rounded="full"
+          filter="blur(60px)"
+          opacity="0.1"
+        />
+        <Box
+          position="absolute"
+          bottom="10%"
+          left="10%"
+          w="64"
+          h="64"
+          bg="brand.light"
+          rounded="full"
+          filter="blur(60px)"
+          opacity="0.1"
+        />
+      </Box>
+      <Container maxW="7xl" px={{ base: 6, sm: 8, lg: 12 }} position="relative" zIndex="10">
         <Box textAlign="center">
           <Heading
             as="h2"

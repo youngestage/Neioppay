@@ -5,8 +5,28 @@ import { Box, Container, Grid, Heading, Text, Image, Badge } from "@chakra-ui/re
 
 export const BusinessBanking: React.FC = () => {
   return (
-    <Box as="section" bg="white" py={{ base: "20", lg: "28" }} position="relative">
-      <Container maxW="7xl" px={{ base: 6, sm: 8, lg: 12 }}>
+    <Box
+      as="section"
+      bgGradient="linear(to-b, brand.50, white)"
+      py={{ base: "20", lg: "28" }}
+      position="relative"
+      overflow="hidden"
+    >
+      {/* Background decorative elements */}
+      <Box position="absolute" inset="0" overflow="hidden" pointerEvents="none">
+        <Box
+          position="absolute"
+          bottom="20%"
+          right="-10%"
+          w="96"
+          h="96"
+          bg="brand.light"
+          rounded="full"
+          filter="blur(80px)"
+          opacity="0.08"
+        />
+      </Box>
+      <Container maxW="7xl" px={{ base: 6, sm: 8, lg: 12 }} position="relative" zIndex="10">
         <Grid
           templateColumns={{ base: "1fr", md: "1fr 1fr" }}
           gap={{ base: "12", md: "16" }}
@@ -50,7 +70,13 @@ export const BusinessBanking: React.FC = () => {
             >
               Accept payments with ease using the Neiop Pay POS. Manage your business, reconcile & track transactions, all in one place.
             </Text>
-            <NextLink href="#business-account" passHref legacyBehavior>
+            <NextLink
+              href="https://play.google.com/store/apps/details?id=com.neiop.app"
+              target="_blank"
+              rel="noopener noreferrer"
+              passHref
+              legacyBehavior
+            >
               <Box
                 as="a"
                 display="inline-block"

@@ -5,8 +5,28 @@ import { Box, Container, Grid, Heading, Text, Image, Stack, Badge, GridItem } fr
 
 export const LoanInvestment: React.FC = () => {
   return (
-    <Box as="section" bg="white" py={{ base: "20", lg: "28" }} position="relative">
-      <Container maxW="7xl" px={{ base: 6, sm: 8, lg: 12 }}>
+    <Box
+      as="section"
+      bgGradient="linear(to-b, white, brand.50)"
+      py={{ base: "20", lg: "28" }}
+      position="relative"
+      overflow="hidden"
+    >
+      {/* Background decorative elements */}
+      <Box position="absolute" inset="0" overflow="hidden" pointerEvents="none">
+        <Box
+          position="absolute"
+          top="20%"
+          right="-10%"
+          w="96"
+          h="96"
+          bg="brand.light"
+          rounded="full"
+          filter="blur(80px)"
+          opacity="0.08"
+        />
+      </Box>
+      <Container maxW="7xl" px={{ base: 6, sm: 8, lg: 12 }} position="relative" zIndex="10">
         <Grid
           templateColumns={{ base: "1fr", md: "1fr 1fr" }}
           gap={{ base: "12", md: "16" }}
@@ -86,7 +106,13 @@ export const LoanInvestment: React.FC = () => {
               Empowering your financial future through strategic investments and flexible loans at competitive rates. Transparent, accessible, and designed to help you achieve your goals.
             </Text>
             <Stack direction={{ base: "column", sm: "row" }} gap="4">
-              <NextLink href="#get-started" passHref legacyBehavior>
+              <NextLink
+                href="https://play.google.com/store/apps/details?id=com.neiop.app"
+                target="_blank"
+                rel="noopener noreferrer"
+                passHref
+                legacyBehavior
+              >
                 <Box
                   as="a"
                   display="inline-block"
@@ -108,11 +134,17 @@ export const LoanInvestment: React.FC = () => {
                       boxShadow: "var(--chakra-shadows-md)",
                     },
                   }}
-              >
-                Get Started
+                >
+                  Get Started
                 </Box>
               </NextLink>
-              <NextLink href="#get-started" passHref legacyBehavior>
+              <NextLink
+                href="https://play.google.com/store/apps/details?id=com.neiop.app"
+                target="_blank"
+                rel="noopener noreferrer"
+                passHref
+                legacyBehavior
+              >
                 <Box
                   as="a"
                   display="inline-block"
