@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { Box, Container, Heading, Text, Input, Button, Flex } from "@chakra-ui/react";
 
 export const Newsletter: React.FC = () => {
   const [email, setEmail] = useState("");
@@ -13,35 +14,82 @@ export const Newsletter: React.FC = () => {
   };
 
   return (
-    <section className="bg-blue-very-dark py-16 lg:py-24">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center">
-          <h2 className="text-3xl md:text-4xl font-poppins font-bold text-white mb-4">
+    <Box as="section" bg="brand.veryDark" py={{ base: "20", lg: "28" }}>
+      <Container maxW="7xl" px={{ base: 6, sm: 8, lg: 12 }}>
+        <Box textAlign="center">
+          <Heading
+            as="h2"
+            fontSize={{ base: "3xl", md: "4xl", lg: "5xl" }}
+            fontFamily="var(--font-poppins)"
+            fontWeight="bold"
+            color="white"
+            mb="4"
+            letterSpacing="-0.02em"
+          >
             Sign up for our weekly newsletter
-          </h2>
-          <p className="text-lg font-inter text-white mb-8">
+          </Heading>
+          <Text
+            fontSize={{ base: "lg", md: "xl" }}
+            fontFamily="var(--font-inter)"
+            color="white"
+            mb="10"
+            opacity="0.9"
+          >
             for fun, finance and more
-          </p>
-          <form onSubmit={handleSubmit} className="max-w-md mx-auto flex gap-4">
-            <input
+          </Text>
+          <Box
+            as="form"
+            onSubmit={handleSubmit}
+            maxW="md"
+            mx="auto"
+          >
+            <Flex gap="4" direction={{ base: "column", sm: "row" }}>
+              <Input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter your email"
               required
-              className="flex-1 px-4 py-3 rounded-lg font-inter text-blue-very-dark focus:outline-none focus:ring-2 focus:ring-blue-light"
+                flex="1"
+                px="6"
+                py="6"
+                rounded="lg"
+                fontFamily="var(--font-inter)"
+                color="brand.veryDark"
+                bg="white"
+                border="none"
+                css={{
+                  "&:focus": {
+                    outline: "2px solid var(--chakra-colors-brand-light)",
+                    outlineOffset: "0",
+                  },
+                }}
             />
-            <button
+              <Button
               type="submit"
-              className="bg-blue-light text-white px-8 py-3 rounded-lg font-poppins font-semibold hover:bg-blue-dark transition-colors"
+                px="10"
+                py="6"
+                bg="brand.light"
+                color="white"
+                rounded="lg"
+                fontFamily="var(--font-poppins)"
+                fontWeight="semibold"
+                fontSize="md"
+                css={{
+                  transition: "all 0.3s",
+                  "&:hover": {
+                    background: "var(--chakra-colors-brand-dark)",
+                    transform: "translateY(-2px)",
+                    boxShadow: "var(--chakra-shadows-lg)",
+                  },
+                }}
             >
               Sign Up
-            </button>
-          </form>
-        </div>
-      </div>
-    </section>
+              </Button>
+            </Flex>
+          </Box>
+        </Box>
+      </Container>
+    </Box>
   );
 };
-
-

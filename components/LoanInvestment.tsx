@@ -1,49 +1,155 @@
+"use client";
 import React from "react";
-import Link from "next/link";
-import { WavyDivider } from "./WavyDivider";
+import NextLink from "next/link";
+import { Box, Container, Grid, Heading, Text, Image, Stack, Badge, GridItem } from "@chakra-ui/react";
+import { CreativeDivider } from "./CreativeDivider";
 
 export const LoanInvestment: React.FC = () => {
   return (
-    <section className="bg-white py-16 lg:py-24">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div className="order-2 md:order-1 flex items-center justify-center">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/WhatsApp Image 2025-11-10 at 09.53.10.jpeg"
+    <Box as="section" bg="white" py={{ base: "20", lg: "28" }} position="relative">
+      <Container maxW="7xl" px={{ base: 6, sm: 8, lg: 12 }}>
+        <Grid
+          templateColumns={{ base: "1fr", md: "1fr 1fr" }}
+          gap={{ base: "12", md: "16" }}
+          alignItems="center"
+        >
+          <GridItem
+            order={{ base: 2, md: 1 }}
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+            animation="fadeIn 0.8s ease-out"
+            css={{
+              "@keyframes fadeIn": {
+                from: { opacity: 0 },
+                to: { opacity: 1 },
+              },
+            }}
+          >
+            <Box
+              overflow="hidden"
+              rounded="2xl"
+              shadow="xl"
+              maxW="full"
+              css={{
+                transition: "all 0.4s",
+                "&:hover": {
+                  transform: "scale(1.02)",
+                  boxShadow: "var(--chakra-shadows-2xl)",
+                },
+              }}
+            >
+              <Image
+                src="/WhatsApp Image 2025-11-10 at 09.53.10.jpeg"
               alt="Financial Growth and Investment"
-              className="rounded-lg shadow-lg max-w-full h-auto"
+                w="full"
+                h="auto"
+                objectFit="cover"
             />
-          </div>
-          <div className="order-1 md:order-2">
-            <span className="text-blue-light font-inter font-semibold uppercase text-sm mb-4 block">
+            </Box>
+          </GridItem>
+          <GridItem order={{ base: 1, md: 2 }}>
+            <Badge
+              color="brand.light"
+              bg="blue.50"
+              fontFamily="var(--font-inter)"
+              fontWeight="semibold"
+              textTransform="uppercase"
+              fontSize="xs"
+              px="3"
+              py="1"
+              rounded="full"
+              letterSpacing="wider"
+              mb="6"
+            >
               Loan & Investment
-            </span>
-            <h3 className="text-3xl md:text-4xl font-poppins font-bold text-blue-very-dark mb-6">
+            </Badge>
+            <Heading
+              as="h3"
+              fontSize={{ base: "3xl", md: "4xl", lg: "5xl" }}
+              fontFamily="var(--font-poppins)"
+              fontWeight="bold"
+              color="brand.veryDark"
+              mb="6"
+              lineHeight="1.2"
+              letterSpacing="-0.02em"
+            >
               Get Loans at Competitive Rates at Neiop Pay
-            </h3>
-            <p className="text-lg font-inter text-blue-very-dark mb-8">
+            </Heading>
+            <Text
+              fontSize={{ base: "lg", md: "xl" }}
+              fontFamily="var(--font-inter)"
+              color="brand.veryDark"
+              opacity="0.8"
+              mb="10"
+              lineHeight="1.7"
+            >
               Empowering your financial future through strategic investments and flexible loans at competitive rates. Transparent, accessible, and designed to help you achieve your goals.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link
-                href="#get-started"
-                className="bg-blue-dark text-white px-6 py-3 rounded-lg font-poppins font-semibold hover:bg-blue-light transition-colors text-center"
+            </Text>
+            <Stack direction={{ base: "column", sm: "row" }} gap="4">
+              <NextLink href="#get-started" passHref legacyBehavior>
+                <Box
+                  as="a"
+                  display="inline-block"
+                  px="8"
+                  py="4"
+                  bg="brand.dark"
+                  color="white"
+                  rounded="lg"
+                  fontFamily="var(--font-poppins)"
+                  fontWeight="semibold"
+                  fontSize="md"
+                  textAlign="center"
+                  css={{
+                    transition: "all 0.3s",
+                    textDecoration: "none",
+                    "&:hover": {
+                      background: "var(--chakra-colors-brand-light)",
+                      transform: "translateY(-2px)",
+                      boxShadow: "var(--chakra-shadows-md)",
+                    },
+                  }}
               >
                 Get Started
-              </Link>
-              <Link
-                href="#get-started"
-                className="bg-white text-blue-dark border-2 border-blue-dark px-6 py-3 rounded-lg font-poppins font-semibold hover:bg-blue-light hover:text-white transition-colors text-center"
-              >
-                Get Started
-              </Link>
-            </div>
-          </div>
-        </div>
-      </div>
-      <WavyDivider className="text-blue-light" />
-    </section>
+                </Box>
+              </NextLink>
+              <NextLink href="#get-started" passHref legacyBehavior>
+                <Box
+                  as="a"
+                  display="inline-block"
+                  px="8"
+                  py="4"
+                  bg="white"
+                  color="brand.dark"
+                  border="2px solid"
+                  borderColor="brand.dark"
+                  rounded="lg"
+                  fontFamily="var(--font-poppins)"
+                  fontWeight="semibold"
+                  fontSize="md"
+                  textAlign="center"
+                  css={{
+                    transition: "all 0.3s",
+                    textDecoration: "none",
+                    "&:hover": {
+                      background: "var(--chakra-colors-brand-light)",
+                      color: "white",
+                      borderColor: "var(--chakra-colors-brand-light)",
+                      transform: "translateY(-2px)",
+                      boxShadow: "var(--chakra-shadows-md)",
+                    },
+                  }}
+                >
+                  Learn More
+                </Box>
+              </NextLink>
+            </Stack>
+          </GridItem>
+        </Grid>
+      </Container>
+      <Box mt="16">
+        <CreativeDivider color="#3B82F6" />
+      </Box>
+    </Box>
   );
 };
-

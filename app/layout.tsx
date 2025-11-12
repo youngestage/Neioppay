@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Poppins, Inter } from "next/font/google";
 import "./globals.css";
+import { Provider } from "@/components/ui/provider";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -28,9 +29,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${poppins.variable} ${inter.variable} antialiased`}>
-        {children}
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${poppins.variable} ${inter.variable}`}>
+        <Provider>{children}</Provider>
       </body>
     </html>
   );

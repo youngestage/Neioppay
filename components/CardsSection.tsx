@@ -1,35 +1,103 @@
+"use client";
 import React from "react";
-import Link from "next/link";
+import NextLink from "next/link";
+import { Box, Container, Heading, Text, Image } from "@chakra-ui/react";
 
 export const CardsSection: React.FC = () => {
   return (
-    <section className="bg-blue-very-dark py-16 lg:py-24 -mt-16 lg:-mt-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-poppins font-bold text-white mb-4">
+    <Box
+      as="section"
+      bg="brand.veryDark"
+      py={{ base: "20", lg: "28" }}
+      mt={{ base: "-16", lg: "-20" }}
+    >
+      <Container maxW="7xl" px={{ base: 6, sm: 8, lg: 12 }}>
+        <Box textAlign="center">
+          <Heading
+            as="h2"
+            fontSize={{ base: "3xl", md: "4xl", lg: "5xl" }}
+            fontFamily="var(--font-poppins)"
+            fontWeight="bold"
+            color="white"
+            mb="6"
+            letterSpacing="-0.02em"
+          >
             Pay With Our Cards
-          </h2>
-          <p className="text-lg font-inter text-white max-w-2xl mx-auto mb-8">
+          </Heading>
+          <Text
+            fontSize={{ base: "lg", md: "xl" }}
+            fontFamily="var(--font-inter)"
+            color="white"
+            opacity="0.9"
+            maxW="2xl"
+            mx="auto"
+            mb="12"
+            lineHeight="1.7"
+          >
             Simple, trusted, and accessible payments. Use your card for effortless online shopping and secure in-store transactions across Africa and beyond.
-          </p>
-          <div className="flex justify-center mb-8">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/WhatsApp Image 2025-11-10 at 09.53.09 (1).jpeg"
+          </Text>
+          <Box
+            display="flex"
+            justifyContent="center"
+            mb="12"
+            animation="fadeInUp 0.8s ease-out"
+            css={{
+              "@keyframes fadeInUp": {
+                from: { opacity: 0, transform: "translateY(30px)" },
+                to: { opacity: 1, transform: "translateY(0)" },
+              },
+            }}
+          >
+            <Box
+              maxW="xl"
+              w="full"
+              overflow="hidden"
+              rounded="2xl"
+              shadow="2xl"
+              css={{
+                transition: "all 0.4s",
+                "&:hover": {
+                  transform: "translateY(-8px)",
+                  boxShadow: "var(--chakra-shadows-dark-lg)",
+                },
+              }}
+            >
+              <Image
+                src="/WhatsApp Image 2025-11-10 at 09.53.09 (1).jpeg"
               alt="Neiop Pay Credit Card"
-              className="rounded-lg shadow-lg max-w-full h-auto"
+                w="full"
+                h="auto"
+                objectFit="cover"
             />
-          </div>
-          <Link
-            href="#personal-account"
-            className="inline-block bg-blue-dark text-white px-8 py-3 rounded-lg font-poppins font-semibold hover:bg-blue-light transition-colors"
+            </Box>
+          </Box>
+          <NextLink href="#personal-account" passHref legacyBehavior>
+            <Box
+              as="a"
+              display="inline-block"
+              px="10"
+              py="4"
+              bg="brand.dark"
+              color="white"
+              rounded="lg"
+              fontFamily="var(--font-poppins)"
+              fontWeight="semibold"
+              fontSize="md"
+              css={{
+                transition: "all 0.3s",
+                textDecoration: "none",
+                "&:hover": {
+                  background: "var(--chakra-colors-brand-light)",
+                  transform: "translateY(-2px)",
+                  boxShadow: "var(--chakra-shadows-lg)",
+                },
+              }}
           >
             Get A Personal Account
-          </Link>
-        </div>
-      </div>
-    </section>
+            </Box>
+          </NextLink>
+        </Box>
+      </Container>
+    </Box>
   );
 };
-
-

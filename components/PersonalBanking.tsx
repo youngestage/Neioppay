@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { WavyDivider } from "./WavyDivider";
+import { CreativeDivider } from "./CreativeDivider";
 
 export const PersonalBanking: React.FC = () => {
   return (
@@ -15,7 +15,7 @@ export const PersonalBanking: React.FC = () => {
               Pay Bills For Less Anytime
             </h3>
             <p className="text-lg font-inter text-blue-very-dark mb-8">
-              Fast, secure, and seamless bill payments that promote financial inclusion and convenience. Pay less and easily with Neiop Pay.
+              Stop struggling with bills payment, pay less and easily with Neiop Pay.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link
@@ -32,17 +32,12 @@ export const PersonalBanking: React.FC = () => {
               </Link>
             </div>
           </div>
-          <div className="flex items-center justify-center">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/WhatsApp Image 2025-11-10 at 09.53.09.jpeg"
-              alt="Bills Payment App"
-              className="rounded-lg shadow-lg max-w-full h-auto"
-            />
+          <div className="bg-gray-100 rounded-lg h-64 md:h-96 flex items-center justify-center">
+            <span className="text-gray-400 font-inter">Bills Payment Image</span>
           </div>
         </div>
       </div>
-      <WavyDivider className="text-blue-light" flip />
+      <CreativeDivider color="#3B82F6" flip />
     </section>
   );
 };

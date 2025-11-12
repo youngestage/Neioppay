@@ -1,69 +1,334 @@
+"use client";
+
 import React from "react";
-import { WavyDivider } from "./WavyDivider";
+import { Box, Container, Heading, Text, Flex, SimpleGrid, Badge } from "@chakra-ui/react";
+import { CreativeDivider } from "./CreativeDivider";
 
 interface Feature {
   title: string;
   description: string;
-  icon: string;
+  icon: React.ReactNode;
+  colSpan?: number;
+  rowSpan?: number;
 }
 
 const features: Feature[] = [
   {
-    title: "Fast & Seamless",
-    description: "Fast, secure, and seamless digital payment solutions that simplify financial transactions and promote convenience.",
-    icon: "💳",
+    title: "Lightning Fast Transactions",
+    description:
+      "Experience instant payments with our cutting-edge infrastructure designed to move money in seconds, not minutes.",
+    icon: (
+      <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+      </svg>
+    ),
+    colSpan: 3,
+    rowSpan: 2,
   },
   {
-    title: "Transparent & Secure",
-    description: "Bank-level security with complete transparency. Your financial data is protected with advanced encryption and transparent processes.",
-    icon: "🔒",
+    title: "Bank-Level Security",
+    description:
+      "Your financial data is protected with encryption, hardware isolation, and multi-factor authentication licensed by CBN and insured by NDIC.",
+    icon: (
+      <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+      </svg>
+    ),
+    colSpan: 3,
+    rowSpan: 1,
   },
   {
     title: "Financial Inclusion",
-    description: "Promoting financial inclusion across Africa and beyond. Making everyday transactions accessible to everyone.",
-    icon: "⚡",
+    description:
+      "Built for African markets with support for local payment channels, offline access, and multilingual experiences that keep people connected.",
+    icon: (
+      <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+      </svg>
+    ),
+    colSpan: 2,
+    rowSpan: 1,
   },
   {
     title: "Innovative Technology",
-    description: "Connecting people, businesses, and institutions through innovative technology that makes transactions simple and trusted.",
-    icon: "🔄",
+    description:
+      "AI-driven monitoring, intelligent routing, and modular APIs keep your finances seamless, scalable, and ready for whatever comes next.",
+    icon: (
+      <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+      </svg>
+    ),
+    colSpan: 2,
+    rowSpan: 2,
   },
   {
-    title: "24/7 Accessibility",
-    description: "Accessible to everyone, anytime. Get help whenever you need it with our round-the-clock customer support.",
-    icon: "🕐",
+    title: "Transparent Pricing",
+    description:
+      "No hidden fees, no surprises. We structure costs so you see exactly what you pay for and keep more of every transaction.",
+    icon: (
+      <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+      </svg>
+    ),
+    colSpan: 2,
+    rowSpan: 1,
+  },
+  {
+    title: "Seamless Integration",
+    description:
+      "Plug Neiop Pay into your stack using SDKs, partner integrations, and webhooks that make automation effortless.",
+    icon: (
+      <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+      </svg>
+    ),
+    colSpan: 2,
+    rowSpan: 1,
   },
 ];
 
 export const Features: React.FC = () => {
   return (
-    <section className="bg-white py-16 lg:py-24">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-poppins font-bold text-blue-very-dark mb-4">
-            Why Choose Us?
-          </h2>
-        </div>
+    <Box
+      as="section"
+      bgGradient="linear(to-b, white, blue.50)"
+      py={{ base: "20", lg: "28" }}
+      position="relative"
+      overflow="hidden"
+    >
+      {/* Subtle background elements */}
+      <Box position="absolute" inset="0" overflow="hidden" pointerEvents="none">
+        <Box
+          position="absolute"
+          top="0"
+          right="0"
+          w="96"
+          h="96"
+          bg="blue.100"
+          rounded="full"
+          filter="blur(80px)"
+          opacity="0.15"
+        />
+        <Box
+          position="absolute"
+          bottom="0"
+          left="0"
+          w="96"
+          h="96"
+          bg="blue.100"
+          rounded="full"
+          filter="blur(80px)"
+          opacity="0.15"
+        />
+      </Box>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {features.map((feature, index) => (
-            <div
-              key={index}
-              className="bg-white border-2 border-blue-light rounded-lg p-6 hover:shadow-lg transition-shadow"
+      <Container maxW="7xl" px={{ base: 6, sm: 8, lg: 12 }} position="relative" zIndex="10">
+        {/* Header Section */}
+        <Box textAlign="center" mb="20">
+          <Badge
+            color="brand.light"
+            bg="blue.50"
+            fontFamily="var(--font-inter)"
+            fontWeight="semibold"
+            textTransform="uppercase"
+            fontSize="xs"
+            px="3"
+            py="1"
+            rounded="full"
+            letterSpacing="wider"
+            mb="6"
+          >
+            Why Choose Us
+          </Badge>
+          <Heading
+            as="h2"
+            fontSize={{ base: "3xl", md: "4xl", lg: "5xl" }}
+            fontFamily="var(--font-poppins)"
+            fontWeight="bold"
+            color="brand.veryDark"
+            mb="6"
+            letterSpacing="-0.02em"
+          >
+            Reasons Our Community Chooses Neiop Pay
+          </Heading>
+          <Text
+            fontSize={{ base: "lg", md: "xl" }}
+            fontFamily="var(--font-inter)"
+            color="brand.veryDark"
+            opacity="0.8"
+            maxW="3xl"
+            mx="auto"
+            lineHeight="1.8"
+          >
+            We&apos;re not just another payment platform. We&apos;re your trusted partner in building a better financial future,
+            powered by innovation, security, and a commitment to making banking accessible to everyone.
+          </Text>
+        </Box>
+
+        {/* Features Grid */}
+        <SimpleGrid
+          columns={{ base: 1, md: 6 }}
+          gap="6"
+          mb="20"
+          css={{
+            "@media (min-width: 768px)": {
+              "& > div:nth-of-type(1)": { gridColumn: "span 3", gridRow: "span 2" },
+              "& > div:nth-of-type(2)": { gridColumn: "span 3", gridRow: "span 1" },
+              "& > div:nth-of-type(3)": { gridColumn: "span 2", gridRow: "span 1" },
+              "& > div:nth-of-type(4)": { gridColumn: "span 2", gridRow: "span 2" },
+              "& > div:nth-of-type(5)": { gridColumn: "span 2", gridRow: "span 1" },
+              "& > div:nth-of-type(6)": { gridColumn: "span 2", gridRow: "span 1" },
+            },
+          }}
+        >
+          {features.map((feature) => (
+            <Box
+              key={feature.title}
+              position="relative"
+              overflow="hidden"
+              rounded="2xl"
+              border="1px solid"
+              borderColor="blue.100"
+              bg="white"
+              p="8"
+              transition="all 0.3s"
+              _hover={{
+                transform: "translateY(-4px)",
+                shadow: "xl",
+                borderColor: "brand.light",
+              }}
             >
-              <div className="text-4xl mb-4">{feature.icon}</div>
-              <h3 className="text-xl font-poppins font-bold text-blue-very-dark mb-3">
-                {feature.title}
-              </h3>
-              <p className="text-base font-inter text-blue-very-dark">
-                {feature.description}
-              </p>
-            </div>
+              <Flex direction="column" h="full">
+                <Flex
+                  w="14"
+                  h="14"
+                  rounded="xl"
+                  align="center"
+                  justify="center"
+                  color="white"
+                  bg="brand.light"
+                  shadow="md"
+                  mb="6"
+                >
+                  {feature.icon}
+                </Flex>
+                <Heading
+                  as="h3"
+                  fontSize={{ base: "xl", md: "2xl" }}
+                  fontFamily="var(--font-poppins)"
+                  fontWeight="bold"
+                  color="brand.veryDark"
+                  mb="4"
+                >
+                  {feature.title}
+                </Heading>
+                <Text
+                  fontSize="base"
+                  fontFamily="var(--font-inter)"
+                  color="brand.veryDark"
+                  opacity="0.8"
+                  lineHeight="1.7"
+                >
+                  {feature.description}
+                </Text>
+              </Flex>
+            </Box>
           ))}
-        </div>
-      </div>
-      <WavyDivider className="text-blue-light" />
-    </section>
+        </SimpleGrid>
+
+        {/* Trust Indicators */}
+        <Box
+          bg="white"
+          backdropFilter="blur(8px)"
+          rounded="2xl"
+          p="10"
+          border="1px solid"
+          borderColor="blue.100"
+          shadow="sm"
+        >
+          <Box textAlign="center" mb="8">
+            <Heading
+              as="h3"
+              fontSize="2xl"
+              fontFamily="var(--font-poppins)"
+              fontWeight="bold"
+              color="brand.veryDark"
+              mb="3"
+            >
+              Trusted & Regulated
+            </Heading>
+            <Text fontSize="base" fontFamily="var(--font-inter)" color="brand.veryDark" opacity="0.7">
+              Your funds are safe with us. We&apos;re fully licensed and insured.
+            </Text>
+          </Box>
+          <Flex flexWrap="wrap" alignItems="center" justifyContent="center" gap="8">
+            <Flex align="center" gap="3">
+              <Flex w="12" h="12" rounded="full" bg="blue.50" align="center" justify="center">
+                <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ color: "var(--chakra-colors-brand-dark)" }}>
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+                  />
+                </svg>
+              </Flex>
+              <Box>
+                <Text fontFamily="var(--font-poppins)" fontWeight="semibold" color="brand.veryDark">
+                  Licensed by CBN
+                </Text>
+                <Text fontSize="sm" fontFamily="var(--font-inter)" color="brand.veryDark" opacity="0.6">
+                  Central Bank of Nigeria
+                </Text>
+              </Box>
+            </Flex>
+            <Flex align="center" gap="3">
+              <Flex w="12" h="12" rounded="full" bg="blue.50" align="center" justify="center">
+                <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ color: "var(--chakra-colors-brand-dark)" }}>
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+                  />
+                </svg>
+              </Flex>
+              <Box>
+                <Text fontFamily="var(--font-poppins)" fontWeight="semibold" color="brand.veryDark">
+                  Insured by NDIC
+                </Text>
+                <Text fontSize="sm" fontFamily="var(--font-inter)" color="brand.veryDark" opacity="0.6">
+                  Deposit Insurance
+                </Text>
+              </Box>
+            </Flex>
+            <Flex align="center" gap="3">
+              <Flex w="12" h="12" rounded="full" bg="blue.50" align="center" justify="center">
+                <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ color: "var(--chakra-colors-brand-dark)" }}>
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M13 10V3L4 14h7v7l9-11h-7z"
+                  />
+                </svg>
+              </Flex>
+              <Box>
+                <Text fontFamily="var(--font-poppins)" fontWeight="semibold" color="brand.veryDark">
+                  256-bit Encryption
+                </Text>
+                <Text fontSize="sm" fontFamily="var(--font-inter)" color="brand.veryDark" opacity="0.6">
+                  Bank-Level Security
+                </Text>
+              </Box>
+            </Flex>
+          </Flex>
+        </Box>
+      </Container>
+      <Box mt="16">
+        <CreativeDivider color="#3B82F6" />
+      </Box>
+    </Box>
   );
 };
 

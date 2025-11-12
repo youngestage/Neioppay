@@ -1,7 +1,8 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import Link from "next/link";
+import NextLink from "next/link";
+import { Box, Flex, Link, Image, IconButton, Stack, Container } from "@chakra-ui/react";
 
 export const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -17,9 +18,9 @@ export const Navbar: React.FC = () => {
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
@@ -31,64 +32,77 @@ export const Navbar: React.FC = () => {
   ];
 
   return (
-    <nav className={`sticky top-0 z-50 transition-all duration-300 ${
-      isScrolled 
-        ? 'bg-white/80 backdrop-blur-md shadow-lg' 
-        : 'bg-white border-b border-gray-200'
-    }`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+    <Box
+      as="nav"
+      position="sticky"
+      top="0"
+      zIndex="50"
+      bg={isScrolled ? "white" : "white"}
+      backdropFilter={isScrolled ? "blur(12px)" : "none"}
+      boxShadow={isScrolled ? "md" : "none"}
+      borderBottomWidth={isScrolled ? "0" : "1px"}
+      borderBottomColor={isScrolled ? "transparent" : "gray.100"}
+      transition="all 0.3s ease"
+      opacity={isScrolled ? 0.98 : 1}
+    >
+      <Container maxW="7xl" px={{ base: 6, sm: 8, lg: 12 }}>
+        <Flex justify="space-between" align="center" h="20">
           {/* Logo */}
-          <Link href="/" className="flex items-center">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/logo.png"
-              alt="Neiop Pay Logo"
-              className="h-10 w-auto"
-            />
+          <Link asChild>
+            <NextLink href="/">
+              <Flex align="center">
+                <Image src="/logo.png" alt="Neiop Pay Logo" h="10" w="auto" />
+              </Flex>
+            </NextLink>
           </Link>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-8">
+          <Flex display={{ base: "none", md: "flex" }} align="center" gap="8">
             {menuItems.map((item) => (
               <Link
                 key={item.href}
-                href={item.href}
-                className="text-blue-very-dark hover:text-blue-dark font-inter font-medium transition-colors"
+                asChild
+                color="brand.veryDark"
+                fontFamily="var(--font-inter)"
+                fontWeight="medium"
+                _hover={{ color: "brand.dark" }}
+                transition="colors 0.2s"
               >
-                {item.label}
+                <NextLink href={item.href}>{item.label}</NextLink>
               </Link>
             ))}
-            <a
+            <Link
               href="https://play.google.com/store/apps/details?id=com.neiop.app"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Get it on Google Play"
-              className="inline-block"
             >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+              <Image
                 src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
                 alt="Get it on Google Play"
-                className="h-8 w-auto"
+                h="8"
+                w="auto"
               />
-            </a>
-          </div>
+            </Link>
+          </Flex>
 
           {/* Mobile Menu Button */}
-          <button
-            className="md:hidden text-blue-very-dark"
+          <IconButton
+            display={{ base: "flex", md: "none" }}
             onClick={() => setIsMenuOpen(!isMenuOpen)}
+            variant="ghost"
             aria-label="Toggle menu"
+            color="brand.veryDark"
           >
             <svg
-              className="w-6 h-6"
+              width="24"
+              height="24"
               fill="none"
+              stroke="currentColor"
               strokeLinecap="round"
               strokeLinejoin="round"
               strokeWidth="2"
               viewBox="0 0 24 24"
-              stroke="currentColor"
             >
               {isMenuOpen ? (
                 <path d="M6 18L18 6M6 6l12 12" />
@@ -96,42 +110,57 @@ export const Navbar: React.FC = () => {
                 <path d="M4 6h16M4 12h16M4 18h16" />
               )}
             </svg>
-          </button>
-        </div>
+          </IconButton>
+        </Flex>
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden py-4 space-y-4">
+          <Stack
+            display={{ base: "flex", md: "none" }}
+            py="6"
+            gap="4"
+            animation="slideDown 0.3s ease-out"
+            css={{
+              "@keyframes slideDown": {
+                from: { opacity: 0, transform: "translateY(-10px)" },
+                to: { opacity: 1, transform: "translateY(0)" },
+              },
+            }}
+          >
             {menuItems.map((item) => (
               <Link
                 key={item.href}
-                href={item.href}
-                className="block text-blue-very-dark hover:text-blue-dark font-inter font-medium"
+                asChild
+                color="brand.veryDark"
+                fontFamily="var(--font-inter)"
+                fontWeight="medium"
+                py="2"
+                px="3"
+                rounded="md"
+                transition="all 0.2s"
+                _hover={{ color: "brand.dark", bg: "blue.50" }}
                 onClick={() => setIsMenuOpen(false)}
               >
-                {item.label}
+                <NextLink href={item.href}>{item.label}</NextLink>
               </Link>
             ))}
-            <a
+            <Link
               href="https://play.google.com/store/apps/details?id=com.neiop.app"
               target="_blank"
               rel="noopener noreferrer"
-              className="block"
               aria-label="Get it on Google Play"
               onClick={() => setIsMenuOpen(false)}
             >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+              <Image
                 src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
                 alt="Get it on Google Play"
-                className="h-10 w-auto"
+                h="10"
+                w="auto"
               />
-            </a>
-          </div>
+            </Link>
+          </Stack>
         )}
-      </div>
-    </nav>
+      </Container>
+    </Box>
   );
 };
-
-
