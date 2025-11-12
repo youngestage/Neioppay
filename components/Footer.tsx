@@ -151,12 +151,18 @@ export const Footer: React.FC = () => {
               </div>
               <div>
                 <p className="text-xs text-blue-very-dark/60 mb-1">Address</p>
-                <p className="text-xs leading-relaxed mb-2">
-                  9b second powerline, opposite the Gen school Sango
-                </p>
-                <p className="text-xs leading-relaxed">
-                  241 Elizabeth Avenue St. John&apos;s Province Newfoundland and Labrador
-                </p>
+                <div className="mb-2">
+                  <p className="text-xs font-semibold text-blue-very-dark/80 mb-1">Nigeria</p>
+                  <p className="text-xs leading-relaxed">
+                    9b second powerline, opposite the Gen school Sango
+                  </p>
+                </div>
+                <div>
+                  <p className="text-xs font-semibold text-blue-very-dark/80 mb-1">Canada</p>
+                  <p className="text-xs leading-relaxed">
+                    241 Elizabeth Avenue St. John&apos;s Province Newfoundland and Labrador
+                  </p>
+                </div>
               </div>
             </div>
           </div>
