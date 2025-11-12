@@ -176,75 +176,82 @@ export const Features: React.FC = () => {
           </Text>
         </Box>
 
-        {/* Features Grid */}
+        {/* Features Grid - Compact Bento Layout */}
         <SimpleGrid
-          columns={{ base: 1, md: 6 }}
+          columns={{ base: 1, md: 2, lg: 3 }}
           gap="6"
           mb="20"
-          css={{
-            "@media (min-width: 768px)": {
-              "& > div:nth-of-type(1)": { gridColumn: "span 3", gridRow: "span 2" },
-              "& > div:nth-of-type(2)": { gridColumn: "span 3", gridRow: "span 1" },
-              "& > div:nth-of-type(3)": { gridColumn: "span 2", gridRow: "span 1" },
-              "& > div:nth-of-type(4)": { gridColumn: "span 2", gridRow: "span 2" },
-              "& > div:nth-of-type(5)": { gridColumn: "span 2", gridRow: "span 1" },
-              "& > div:nth-of-type(6)": { gridColumn: "span 2", gridRow: "span 1" },
-            },
-          }}
+          autoRows="minmax(200px, auto)"
         >
-          {features.map((feature) => (
-            <Box
-              key={feature.title}
-              position="relative"
-              overflow="hidden"
-              rounded="2xl"
-              border="1px solid"
-              borderColor="blue.100"
-              bg="white"
-              p="8"
-              transition="all 0.3s"
-              _hover={{
-                transform: "translateY(-4px)",
-                shadow: "xl",
-                borderColor: "brand.light",
-              }}
-            >
-              <Flex direction="column" h="full">
-                <Flex
-                  w="14"
-                  h="14"
-                  rounded="xl"
-                  align="center"
-                  justify="center"
-                  color="white"
-                  bg="brand.light"
-                  shadow="md"
-                  mb="6"
-                >
-                  {feature.icon}
+          {features.map((feature, index) => {
+            // Create a more balanced layout
+            const isLarge = index === 0 || index === 3; // First and fourth items span 2 columns
+            return (
+              <Box
+                key={feature.title}
+                position="relative"
+                overflow="hidden"
+                rounded="xl"
+                border="1px solid"
+                borderColor="blue.100"
+                bg="white"
+                p={{ base: "6", md: isLarge ? "8" : "6" }}
+                transition="all 0.3s"
+                gridColumn={{ base: "span 1", lg: isLarge ? "span 2" : "span 1" }}
+                minH={{ base: "auto", md: "220px" }}
+                maxH={{ base: "none", md: isLarge ? "280px" : "240px" }}
+                _hover={{
+                  transform: "translateY(-4px)",
+                  shadow: "xl",
+                  borderColor: "brand.light",
+                }}
+              >
+                <Flex direction="column" h="full" justify="space-between">
+                  <Box>
+                    <Flex
+                      w="12"
+                      h="12"
+                      rounded="lg"
+                      align="center"
+                      justify="center"
+                      color="white"
+                      bg="brand.light"
+                      shadow="md"
+                      mb="4"
+                    >
+                      {feature.icon}
+                    </Flex>
+                    <Heading
+                      as="h3"
+                      fontSize={{ base: "lg", md: isLarge ? "xl" : "lg" }}
+                      fontFamily="var(--font-poppins)"
+                      fontWeight="bold"
+                      color="brand.veryDark"
+                      mb="3"
+                      lineHeight="1.3"
+                    >
+                      {feature.title}
+                    </Heading>
+                    <Text
+                      fontSize={{ base: "sm", md: "base" }}
+                      fontFamily="var(--font-inter)"
+                      color="brand.veryDark"
+                      opacity="0.8"
+                      lineHeight="1.6"
+                      overflow="hidden"
+                      css={{
+                        display: "-webkit-box",
+                        WebkitLineClamp: isLarge ? 5 : 3,
+                        WebkitBoxOrient: "vertical",
+                      }}
+                    >
+                      {feature.description}
+                    </Text>
+                  </Box>
                 </Flex>
-                <Heading
-                  as="h3"
-                  fontSize={{ base: "xl", md: "2xl" }}
-                  fontFamily="var(--font-poppins)"
-                  fontWeight="bold"
-                  color="brand.veryDark"
-                  mb="4"
-                >
-                  {feature.title}
-                </Heading>
-                <Text
-                  fontSize="base"
-                  fontFamily="var(--font-inter)"
-                  color="brand.veryDark"
-                  opacity="0.8"
-                  lineHeight="1.7"
-                >
-                  {feature.description}
-                </Text>
-              </Flex>
-            </Box>
-          ))}
+              </Box>
+            );
+          })}
         </SimpleGrid>
 
         {/* Trust Indicators */}

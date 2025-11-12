@@ -151,8 +151,11 @@ export const Footer: React.FC = () => {
               </div>
               <div>
                 <p className="text-xs text-blue-very-dark/60 mb-1">Address</p>
-                <p className="text-xs leading-relaxed">
+                <p className="text-xs leading-relaxed mb-2">
                   9b second powerline, opposite the Gen school Sango
+                </p>
+                <p className="text-xs leading-relaxed">
+                  241 Elizabeth Avenue St. John&apos;s Province Newfoundland and Labrador
                 </p>
               </div>
             </div>
@@ -163,7 +166,7 @@ export const Footer: React.FC = () => {
         <div className="border-t border-gray-200 pt-8 mt-8 relative">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <p className="text-xs font-inter text-blue-very-dark/70 text-center md:text-left">
-              Banking services are offered by Neiop Pay Microfinance Bank with registered address at 9b second powerline, opposite the Gen school Sango.
+              Services are offered by Neioppay and it&apos;s powered by Asset Matrix Microfinance Bank.
             </p>
             <p className="text-xs font-inter text-blue-very-dark/70">
               © {new Date().getFullYear()} Neiop Pay. All rights reserved.
