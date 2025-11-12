@@ -2,6 +2,7 @@
 
 import React from "react";
 import { Box, Container, Heading, Text, Flex, SimpleGrid, Badge } from "@chakra-ui/react";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 interface Feature {
   title: string;
@@ -86,7 +87,88 @@ const features: Feature[] = [
   },
 ];
 
+const FeatureCard: React.FC<{ feature: Feature; index: number; isLarge: boolean }> = ({
+  feature,
+  index,
+  isLarge,
+}) => {
+  const { ref, isVisible } = useScrollAnimation();
+
+  return (
+    <Box
+      ref={ref}
+      position="relative"
+      overflow="hidden"
+      rounded="xl"
+      border="1px solid"
+      borderColor="blue.100"
+      bg="white"
+      p={{ base: "6", md: isLarge ? "8" : "6" }}
+      transition="all 0.3s"
+      gridColumn={{ base: "span 1", lg: isLarge ? "span 2" : "span 1" }}
+      minH={{ base: "auto", md: "220px" }}
+      maxH={{ base: "none", md: isLarge ? "280px" : "240px" }}
+      opacity={isVisible ? 1 : 0}
+      transform={isVisible ? "translateY(0) scale(1)" : "translateY(30px) scale(0.95)"}
+      style={{
+        transition: `all 0.6s ease-out ${index * 0.1}s`,
+      }}
+      _hover={{
+        transform: "translateY(-4px) scale(1.02)",
+        shadow: "xl",
+        borderColor: "brand.light",
+      }}
+    >
+      <Flex direction="column" h="full" justify="space-between">
+        <Box>
+          <Flex
+            w="12"
+            h="12"
+            rounded="lg"
+            align="center"
+            justify="center"
+            color="white"
+            bg="brand.light"
+            shadow="md"
+            mb="4"
+          >
+            {feature.icon}
+          </Flex>
+          <Heading
+            as="h3"
+            fontSize={{ base: "lg", md: isLarge ? "xl" : "lg" }}
+            fontFamily="var(--font-poppins)"
+            fontWeight="bold"
+            color="brand.veryDark"
+            mb="3"
+            lineHeight="1.3"
+          >
+            {feature.title}
+          </Heading>
+          <Text
+            fontSize={{ base: "sm", md: "base" }}
+            fontFamily="var(--font-inter)"
+            color="brand.veryDark"
+            opacity="0.8"
+            lineHeight="1.6"
+            overflow="hidden"
+            css={{
+              display: "-webkit-box",
+              WebkitLineClamp: isLarge ? 5 : 3,
+              WebkitBoxOrient: "vertical",
+            }}
+          >
+            {feature.description}
+          </Text>
+        </Box>
+      </Flex>
+    </Box>
+  );
+};
+
 export const Features: React.FC = () => {
+  const { ref: headerRef, isVisible: headerVisible } = useScrollAnimation();
+
   return (
     <Box
       as="section"
@@ -107,6 +189,9 @@ export const Features: React.FC = () => {
           rounded="full"
           filter="blur(100px)"
           opacity="0.12"
+          css={{
+            animation: "blob 12s ease-in-out infinite",
+          }}
         />
         <Box
           position="absolute"
@@ -118,6 +203,10 @@ export const Features: React.FC = () => {
           rounded="full"
           filter="blur(100px)"
           opacity="0.12"
+          css={{
+            animation: "blob 12s ease-in-out infinite",
+            animationDelay: "2s",
+          }}
         />
         <Box
           position="absolute"
@@ -130,12 +219,23 @@ export const Features: React.FC = () => {
           rounded="full"
           filter="blur(120px)"
           opacity="0.08"
+          css={{
+            animation: "blob 15s ease-in-out infinite",
+            animationDelay: "1s",
+          }}
         />
       </Box>
 
       <Container maxW="7xl" px={{ base: 6, sm: 8, lg: 12 }} position="relative" zIndex="10">
         {/* Header Section */}
-        <Box textAlign="center" mb="20">
+        <Box
+          ref={headerRef}
+          textAlign="center"
+          mb="20"
+          opacity={headerVisible ? 1 : 0}
+          transform={headerVisible ? "translateY(0)" : "translateY(30px)"}
+          transition="all 0.8s ease-out"
+        >
           <Badge
             color="brand.light"
             bg="blue.50"
@@ -187,69 +287,12 @@ export const Features: React.FC = () => {
             // Create a more balanced layout
             const isLarge = index === 0 || index === 3; // First and fourth items span 2 columns
             return (
-              <Box
+              <FeatureCard
                 key={feature.title}
-                position="relative"
-                overflow="hidden"
-                rounded="xl"
-                border="1px solid"
-                borderColor="blue.100"
-                bg="white"
-                p={{ base: "6", md: isLarge ? "8" : "6" }}
-                transition="all 0.3s"
-                gridColumn={{ base: "span 1", lg: isLarge ? "span 2" : "span 1" }}
-                minH={{ base: "auto", md: "220px" }}
-                maxH={{ base: "none", md: isLarge ? "280px" : "240px" }}
-                _hover={{
-                  transform: "translateY(-4px)",
-                  shadow: "xl",
-                  borderColor: "brand.light",
-                }}
-              >
-                <Flex direction="column" h="full" justify="space-between">
-                  <Box>
-                    <Flex
-                      w="12"
-                      h="12"
-                      rounded="lg"
-                      align="center"
-                      justify="center"
-                      color="white"
-                      bg="brand.light"
-                      shadow="md"
-                      mb="4"
-                    >
-                      {feature.icon}
-                    </Flex>
-                    <Heading
-                      as="h3"
-                      fontSize={{ base: "lg", md: isLarge ? "xl" : "lg" }}
-                      fontFamily="var(--font-poppins)"
-                      fontWeight="bold"
-                      color="brand.veryDark"
-                      mb="3"
-                      lineHeight="1.3"
-                    >
-                      {feature.title}
-                    </Heading>
-                    <Text
-                      fontSize={{ base: "sm", md: "base" }}
-                      fontFamily="var(--font-inter)"
-                      color="brand.veryDark"
-                      opacity="0.8"
-                      lineHeight="1.6"
-                      overflow="hidden"
-                      css={{
-                        display: "-webkit-box",
-                        WebkitLineClamp: isLarge ? 5 : 3,
-                        WebkitBoxOrient: "vertical",
-                      }}
-                    >
-                      {feature.description}
-                    </Text>
-                  </Box>
-                </Flex>
-              </Box>
+                feature={feature}
+                index={index}
+                isLarge={isLarge}
+              />
             );
           })}
         </SimpleGrid>

@@ -2,9 +2,11 @@
 
 import React, { useState } from "react";
 import { Box, Container, Heading, Text, Input, Button, Flex } from "@chakra-ui/react";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 export const Newsletter: React.FC = () => {
   const [email, setEmail] = useState("");
+  const { ref, isVisible } = useScrollAnimation();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -16,7 +18,13 @@ export const Newsletter: React.FC = () => {
   return (
     <Box as="section" bg="brand.veryDark" py={{ base: "20", lg: "28" }}>
       <Container maxW="7xl" px={{ base: 6, sm: 8, lg: 12 }}>
-        <Box textAlign="center">
+        <Box
+          ref={ref}
+          textAlign="center"
+          opacity={isVisible ? 1 : 0}
+          transform={isVisible ? "translateY(0)" : "translateY(30px)"}
+          transition="all 0.8s ease-out"
+        >
           <Heading
             as="h2"
             fontSize={{ base: "3xl", md: "4xl", lg: "5xl" }}
@@ -34,6 +42,11 @@ export const Newsletter: React.FC = () => {
             color="white"
             mb="10"
             opacity="0.9"
+            transition="all 0.8s ease-out 0.2s"
+            style={{
+              opacity: isVisible ? 0.9 : 0,
+              transform: isVisible ? "translateY(0)" : "translateY(20px)",
+            }}
           >
             for fun, finance and more
           </Text>

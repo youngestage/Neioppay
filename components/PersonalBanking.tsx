@@ -2,8 +2,12 @@
 import React from "react";
 import NextLink from "next/link";
 import { Box, Container, Grid, Heading, Text, Image, Stack, Badge } from "@chakra-ui/react";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 export const PersonalBanking: React.FC = () => {
+  const { ref: textRef, isVisible: textVisible } = useScrollAnimation();
+  const { ref: imageRef, isVisible: imageVisible } = useScrollAnimation();
+
   return (
     <Box
       as="section"
@@ -24,6 +28,9 @@ export const PersonalBanking: React.FC = () => {
           rounded="full"
           filter="blur(80px)"
           opacity="0.08"
+          css={{
+            animation: "blob 10s ease-in-out infinite",
+          }}
         />
       </Box>
       <Container maxW="7xl" px={{ base: 6, sm: 8, lg: 12 }} position="relative" zIndex="10">
@@ -32,7 +39,12 @@ export const PersonalBanking: React.FC = () => {
           gap={{ base: "12", md: "16" }}
           alignItems="center"
         >
-          <Box>
+          <Box
+            ref={textRef}
+            opacity={textVisible ? 1 : 0}
+            transform={textVisible ? "translateX(0)" : "translateX(-30px)"}
+            transition="all 0.8s ease-out"
+          >
             <Badge
               color="brand.light"
               bg="blue.50"
@@ -142,16 +154,13 @@ export const PersonalBanking: React.FC = () => {
             </Stack>
           </Box>
           <Box
+            ref={imageRef}
             display="flex"
             alignItems="center"
             justifyContent="center"
-            animation="fadeIn 0.8s ease-out"
-            css={{
-              "@keyframes fadeIn": {
-                from: { opacity: 0 },
-                to: { opacity: 1 },
-              },
-            }}
+            opacity={imageVisible ? 1 : 0}
+            transform={imageVisible ? "translateX(0)" : "translateX(30px)"}
+            transition="all 0.8s ease-out 0.2s"
           >
             <Box
               overflow="hidden"

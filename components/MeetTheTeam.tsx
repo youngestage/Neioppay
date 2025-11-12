@@ -2,6 +2,7 @@
 
 import React from "react";
 import { Box, Container, Heading, Text, SimpleGrid, Image, Flex } from "@chakra-ui/react";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 interface TeamMember {
   name: string;
@@ -37,18 +38,26 @@ const teamMembers: TeamMember[] = [
   },
 ];
 
-const TeamMemberCard: React.FC<TeamMember> = ({ image, name, role }) => {
+const TeamMemberCard: React.FC<TeamMember & { index: number }> = ({ image, name, role, index }) => {
+  const { ref, isVisible } = useScrollAnimation();
+
   return (
     <Box
+      ref={ref}
       bg="white"
       rounded="xl"
       overflow="hidden"
       border="1px solid"
       borderColor="gray.100"
       transition="all 0.3s"
+      opacity={isVisible ? 1 : 0}
+      transform={isVisible ? "translateY(0) scale(1)" : "translateY(30px) scale(0.95)"}
+      style={{
+        transition: `all 0.6s ease-out ${index * 0.1}s`,
+      }}
       _hover={{
         shadow: "lg",
-        transform: "translateY(-4px)",
+        transform: "translateY(-4px) scale(1.02)",
         borderColor: "brand.light",
       }}
     >
@@ -92,6 +101,8 @@ const TeamMemberCard: React.FC<TeamMember> = ({ image, name, role }) => {
 };
 
 export const MeetTheTeam: React.FC = () => {
+  const { ref: headerRef, isVisible: headerVisible } = useScrollAnimation();
+
   return (
     <Box
       as="section"
@@ -112,6 +123,9 @@ export const MeetTheTeam: React.FC = () => {
           rounded="full"
           filter="blur(60px)"
           opacity="0.08"
+          css={{
+            animation: "blob 10s ease-in-out infinite",
+          }}
         />
         <Box
           position="absolute"
@@ -123,10 +137,21 @@ export const MeetTheTeam: React.FC = () => {
           rounded="full"
           filter="blur(60px)"
           opacity="0.08"
+          css={{
+            animation: "blob 10s ease-in-out infinite",
+            animationDelay: "2s",
+          }}
         />
       </Box>
       <Container maxW="7xl" px={{ base: 6, sm: 8 }} position="relative" zIndex="10">
-        <Box textAlign="center" mb={{ base: "12", sm: "16" }}>
+        <Box
+          ref={headerRef}
+          textAlign="center"
+          mb={{ base: "12", sm: "16" }}
+          opacity={headerVisible ? 1 : 0}
+          transform={headerVisible ? "translateY(0)" : "translateY(30px)"}
+          transition="all 0.8s ease-out"
+        >
           <Heading
             as="h2"
             fontSize={{ base: "3xl", sm: "4xl", md: "5xl" }}
@@ -146,6 +171,11 @@ export const MeetTheTeam: React.FC = () => {
             maxW="3xl"
             mx="auto"
             lineHeight="1.7"
+            transition="all 0.8s ease-out 0.2s"
+            style={{
+              opacity: headerVisible ? 0.7 : 0,
+              transform: headerVisible ? "translateY(0)" : "translateY(20px)",
+            }}
           >
             The passionate individuals behind Neiop Pay are united by a common mission to revolutionize financial services across Africa through innovation and inclusion.
           </Text>
@@ -153,7 +183,7 @@ export const MeetTheTeam: React.FC = () => {
 
         <SimpleGrid columns={{ base: 1, sm: 2, lg: 3 }} gap={{ base: 6, sm: 8 }}>
           {teamMembers.map((member, index) => (
-            <TeamMemberCard key={index} {...member} />
+            <TeamMemberCard key={index} {...member} index={index} />
           ))}
         </SimpleGrid>
       </Container>

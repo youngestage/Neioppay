@@ -1,7 +1,13 @@
+"use client";
+
 import React from "react";
 import { Box, Container, Grid, Heading, Text } from "@chakra-ui/react";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 export const MissionVision: React.FC = () => {
+  const { ref: missionRef, isVisible: missionVisible } = useScrollAnimation();
+  const { ref: visionRef, isVisible: visionVisible } = useScrollAnimation();
+
   return (
     <Box
       as="section"
@@ -24,12 +30,21 @@ export const MissionVision: React.FC = () => {
           rounded="full"
           filter="blur(100px)"
           opacity="0.06"
+          css={{
+            animation: "blob 12s ease-in-out infinite",
+          }}
         />
       </Box>
       <Container maxW="7xl" px={{ base: 6, sm: 8, lg: 12 }} pb={{ base: "20", lg: "28" }} position="relative" zIndex="10">
         <Grid templateColumns={{ base: "1fr", md: "1fr 1fr" }} gap={{ base: "12", lg: "16" }}>
           {/* Mission Statement */}
-          <Box textAlign={{ base: "center", md: "left" }}>
+          <Box
+            ref={missionRef}
+            textAlign={{ base: "center", md: "left" }}
+            opacity={missionVisible ? 1 : 0}
+            transform={missionVisible ? "translateY(0)" : "translateY(30px)"}
+            transition="all 0.8s ease-out"
+          >
             <Heading
               as="h2"
               fontSize={{ base: "2xl", md: "3xl", lg: "4xl" }}
@@ -53,7 +68,13 @@ export const MissionVision: React.FC = () => {
           </Box>
 
           {/* Vision Statement */}
-          <Box textAlign={{ base: "center", md: "left" }}>
+          <Box
+            ref={visionRef}
+            textAlign={{ base: "center", md: "left" }}
+            opacity={visionVisible ? 1 : 0}
+            transform={visionVisible ? "translateY(0)" : "translateY(30px)"}
+            transition="all 0.8s ease-out 0.2s"
+          >
             <Heading
               as="h2"
               fontSize={{ base: "2xl", md: "3xl", lg: "4xl" }}

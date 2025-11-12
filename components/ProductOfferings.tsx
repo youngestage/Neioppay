@@ -1,7 +1,12 @@
+"use client";
+
 import React from "react";
 import { Box, Container, Heading, Text } from "@chakra-ui/react";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 export const ProductOfferings: React.FC = () => {
+  const { ref, isVisible } = useScrollAnimation();
+
   return (
     <Box
       as="section"
@@ -22,6 +27,10 @@ export const ProductOfferings: React.FC = () => {
           rounded="full"
           filter="blur(60px)"
           opacity="0.1"
+          css={{
+            animation: "blob 8s ease-in-out infinite",
+            animationDelay: "0s",
+          }}
         />
         <Box
           position="absolute"
@@ -33,10 +42,20 @@ export const ProductOfferings: React.FC = () => {
           rounded="full"
           filter="blur(60px)"
           opacity="0.1"
+          css={{
+            animation: "blob 8s ease-in-out infinite",
+            animationDelay: "2s",
+          }}
         />
       </Box>
       <Container maxW="7xl" px={{ base: 6, sm: 8, lg: 12 }} position="relative" zIndex="10">
-        <Box textAlign="center">
+        <Box
+          ref={ref}
+          textAlign="center"
+          opacity={isVisible ? 1 : 0}
+          transform={isVisible ? "translateY(0)" : "translateY(30px)"}
+          transition="all 0.8s ease-out"
+        >
           <Heading
             as="h2"
             fontSize={{ base: "3xl", md: "4xl", lg: "5xl" }}
@@ -59,6 +78,11 @@ export const ProductOfferings: React.FC = () => {
             maxW="3xl"
             mx="auto"
             lineHeight="1.8"
+            transition="all 0.8s ease-out 0.2s"
+            style={{
+              opacity: isVisible ? 0.8 : 0,
+              transform: isVisible ? "translateY(0)" : "translateY(20px)",
+            }}
           >
             Connecting people, businesses, and institutions through innovative technology — making everyday transactions simple, trusted, and accessible to everyone.
           </Text>
