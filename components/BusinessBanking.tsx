@@ -71,7 +71,7 @@ export const BusinessBanking: React.FC = () => {
               lineHeight="1.2"
               letterSpacing="-0.02em"
             >
-              Run your business wherever you go with our all-in-one manager.
+              The Future of Business Banking.
             </Heading>
             <Text
               fontSize={{ base: "lg", md: "xl" }}
@@ -81,7 +81,7 @@ export const BusinessBanking: React.FC = () => {
               mb="10"
               lineHeight="1.7"
             >
-              Accept payments with ease using the Neiop Pay POS. Manage your business, reconcile & track transactions, all in one place.
+              Complete Payment infrastructure, Multi currency banking and treasury services. Built for ambitious Business scaling across Nigeria and beyond.
             </Text>
             <NextLink
               href="https://play.google.com/store/apps/details?id=com.neiop.app"
@@ -138,8 +138,8 @@ export const BusinessBanking: React.FC = () => {
               }}
             >
               <Image
-                src="/WhatsApp Image 2025-11-10 at 09.53.11.jpeg"
-                alt="Business Management Dashboard"
+                src="/Image_fx (13).jpg"
+                alt="Business Banking - Complete Payment Infrastructure"
                 w="full"
                 h="auto"
                 objectFit="cover"
