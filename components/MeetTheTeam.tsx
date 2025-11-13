@@ -19,6 +19,7 @@ const teamMembers: TeamMember[] = [
   {
     name: "Dr Ifeanyi A.O",
     role: "CTO & Co-Founder",
+    image: "/PHOTO-2025-11-13-00-47-03.jpg",
   },
 ];
 
