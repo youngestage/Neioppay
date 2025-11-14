@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Box, Container, Grid, Heading, Text, Image, Stack, Badge, Link } from "@chakra-ui/react";
+import { Box, Container, Grid, Heading, Text, Image, Badge, Link } from "@chakra-ui/react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 export const CustomerSupport: React.FC = () => {
@@ -84,35 +84,33 @@ export const CustomerSupport: React.FC = () => {
               Whether you need help with your account, have questions about our services, or require technical support, 
               we&apos;re just a call away.
             </Text>
-            <Stack spacing="4">
-              <Box>
-                <Text
-                  fontSize="sm"
-                  fontFamily="var(--font-inter)"
-                  fontWeight="semibold"
-                  color="brand.veryDark"
-                  mb="2"
-                  textTransform="uppercase"
-                  letterSpacing="wider"
-                >
-                  Contact Us
-                </Text>
-                <Link
-                  href="tel:02013303300"
-                  fontSize={{ base: "2xl", md: "3xl" }}
-                  fontFamily="var(--font-poppins)"
-                  fontWeight="bold"
-                  color="brand.light"
-                  _hover={{
-                    color: "brand.dark",
-                    textDecoration: "underline",
-                  }}
-                  transition="all 0.3s"
-                >
-                  02013303300
-                </Link>
-              </Box>
-            </Stack>
+            <Box>
+              <Text
+                fontSize="sm"
+                fontFamily="var(--font-inter)"
+                fontWeight="semibold"
+                color="brand.veryDark"
+                mb="2"
+                textTransform="uppercase"
+                letterSpacing="wider"
+              >
+                Contact Us
+              </Text>
+              <Link
+                href="tel:02013303300"
+                fontSize={{ base: "2xl", md: "3xl" }}
+                fontFamily="var(--font-poppins)"
+                fontWeight="bold"
+                color="brand.light"
+                _hover={{
+                  color: "brand.dark",
+                  textDecoration: "underline",
+                }}
+                transition="all 0.3s"
+              >
+                02013303300
+              </Link>
+            </Box>
           </Box>
           <Box
             ref={imageRef}
