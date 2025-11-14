@@ -4,12 +4,9 @@ import React from "react";
 import { Link } from "@chakra-ui/react";
 
 export const WhatsAppFloat: React.FC = () => {
-  const phoneNumber = "2349087792935"; // Replace with your WhatsApp number (without + or spaces)
-  const message = encodeURIComponent("Hello! I'm interested in learning more about Neiop Pay.");
-
   return (
     <Link
-      href={`https://wa.me/${phoneNumber}?text=${message}`}
+      href="https://wa.me/qr/JJAITT4SLSZOJ1"
       target="_blank"
       rel="noopener noreferrer"
       position="fixed"
