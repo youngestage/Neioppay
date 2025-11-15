@@ -5,6 +5,7 @@ import { ProductOfferings } from "@/components/ProductOfferings";
 import { PersonalBanking } from "@/components/PersonalBanking";
 import { LoanInvestment } from "@/components/LoanInvestment";
 import { BusinessBanking } from "@/components/BusinessBanking";
+import { POSCarousel } from "@/components/POSCarousel";
 import { Features } from "@/components/Features";
 import { AboutUs } from "@/components/AboutUs";
 import { MeetTheTeam } from "@/components/MeetTheTeam";
@@ -24,6 +25,7 @@ export default function Home() {
       <PersonalBanking />
       <LoanInvestment />
       <BusinessBanking />
+      <POSCarousel />
       <Features />
       <AboutUs />
       <MeetTheTeam />
