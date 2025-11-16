@@ -251,20 +251,6 @@ export const POSCarousel: React.FC = () => {
             {/* Navigation Arrows */}
             <IconButton
               aria-label="Previous slide"
-              icon={
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M15 18l-6-6 6-6" />
-                </svg>
-              }
               position="absolute"
               left={{ base: "4", md: "6" }}
               top="50%"
@@ -283,23 +269,22 @@ export const POSCarousel: React.FC = () => {
               transition="all 0.3s"
               onClick={goToPrevious}
               zIndex="20"
-            />
+            >
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M15 18l-6-6 6-6" />
+              </svg>
+            </IconButton>
             <IconButton
               aria-label="Next slide"
-              icon={
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M9 18l6-6-6-6" />
-                </svg>
-              }
               position="absolute"
               right={{ base: "4", md: "6" }}
               top="50%"
@@ -318,7 +303,20 @@ export const POSCarousel: React.FC = () => {
               transition="all 0.3s"
               onClick={goToNext}
               zIndex="20"
-            />
+            >
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M9 18l6-6-6-6" />
+              </svg>
+            </IconButton>
           </Box>
 
           {/* Dots Indicator */}
