@@ -159,94 +159,91 @@ export const POSCarousel: React.FC = () => {
             borderColor="blue.100"
             minH={{ base: "400px", md: "500px", lg: "600px" }}
           >
-            <Flex
-              position="relative"
-              w="full"
-              h="full"
-              align="center"
-              justify="center"
-              overflow="hidden"
-            >
-              {/* Slides */}
-              {posSlides.map((slide, index) => (
-                <Box
-                  key={index}
-                  position="absolute"
-                  top="0"
-                  left="0"
-                  w="full"
+            {/* Slides */}
+            {posSlides.map((slide, index) => (
+              <Box
+                key={index}
+                position="absolute"
+                top="0"
+                left="0"
+                w="full"
+                h="full"
+                opacity={index === currentIndex ? 1 : 0}
+                zIndex={index === currentIndex ? 10 : 1}
+                transform={
+                  index === currentIndex
+                    ? "translateX(0) scale(1)"
+                    : index < currentIndex
+                    ? "translateX(-100%) scale(0.95)"
+                    : "translateX(100%) scale(0.95)"
+                }
+                transition="all 0.6s cubic-bezier(0.4, 0, 0.2, 1)"
+                pointerEvents={index === currentIndex ? "auto" : "none"}
+              >
+                <Flex
+                  direction={{ base: "column", lg: "row" }}
                   h="full"
-                  opacity={index === currentIndex ? 1 : 0}
-                  transform={
-                    index === currentIndex
-                      ? "translateX(0) scale(1)"
-                      : index < currentIndex
-                      ? "translateX(-100%) scale(0.95)"
-                      : "translateX(100%) scale(0.95)"
-                  }
-                  transition="all 0.6s cubic-bezier(0.4, 0, 0.2, 1)"
-                  pointerEvents={index === currentIndex ? "auto" : "none"}
+                  align="center"
+                  justify="center"
+                  gap={{ base: "8", lg: "12" }}
+                  p={{ base: "8", md: "12", lg: "16" }}
                 >
-                  <Flex
-                    direction={{ base: "column", lg: "row" }}
-                    h="full"
-                    align="center"
-                    justify="center"
-                    gap={{ base: "8", lg: "12" }}
-                    p={{ base: "8", md: "12", lg: "16" }}
+                  {/* Image */}
+                  <Box
+                    flex="1"
+                    maxW={{ base: "full", lg: "50%" }}
+                    w={{ base: "full", lg: "50%" }}
+                    position="relative"
+                    rounded="xl"
+                    overflow="hidden"
+                    bg="blue.50"
+                    p="4"
+                    shadow="lg"
+                    display="flex"
+                    alignItems="center"
+                    justifyContent="center"
                   >
-                    {/* Image */}
-                    <Box
-                      flex="1"
-                      maxW={{ base: "full", lg: "50%" }}
-                      position="relative"
-                      rounded="xl"
-                      overflow="hidden"
-                      bg="blue.50"
-                      p="4"
-                      shadow="lg"
-                    >
-                      <Image
-                        src={slide.image}
-                        alt={slide.title}
-                        w="full"
-                        h="auto"
-                        objectFit="contain"
-                        rounded="lg"
-                      />
-                    </Box>
+                    <Image
+                      src={slide.image}
+                      alt={slide.title}
+                      w="full"
+                      maxH={{ base: "300px", md: "400px", lg: "500px" }}
+                      objectFit="contain"
+                      rounded="lg"
+                    />
+                  </Box>
 
-                    {/* Text Content */}
-                    <Box
-                      flex="1"
-                      maxW={{ base: "full", lg: "50%" }}
-                      textAlign={{ base: "center", lg: "left" }}
+                  {/* Text Content */}
+                  <Box
+                    flex="1"
+                    maxW={{ base: "full", lg: "50%" }}
+                    w={{ base: "full", lg: "50%" }}
+                    textAlign={{ base: "center", lg: "left" }}
+                  >
+                    <Heading
+                      as="h3"
+                      fontSize={{ base: "2xl", md: "3xl", lg: "4xl" }}
+                      fontFamily="var(--font-poppins)"
+                      fontWeight="bold"
+                      color="brand.veryDark"
+                      mb="4"
+                      lineHeight="1.2"
                     >
-                      <Heading
-                        as="h3"
-                        fontSize={{ base: "2xl", md: "3xl", lg: "4xl" }}
-                        fontFamily="var(--font-poppins)"
-                        fontWeight="bold"
-                        color="brand.veryDark"
-                        mb="4"
-                        lineHeight="1.2"
-                      >
-                        {slide.title}
-                      </Heading>
-                      <Text
-                        fontSize={{ base: "base", md: "lg", lg: "xl" }}
-                        fontFamily="var(--font-inter)"
-                        color="brand.veryDark"
-                        opacity="0.8"
-                        lineHeight="1.8"
-                      >
-                        {slide.description}
-                      </Text>
-                    </Box>
-                  </Flex>
-                </Box>
-              ))}
-            </Flex>
+                      {slide.title}
+                    </Heading>
+                    <Text
+                      fontSize={{ base: "base", md: "lg", lg: "xl" }}
+                      fontFamily="var(--font-inter)"
+                      color="brand.veryDark"
+                      opacity="0.8"
+                      lineHeight="1.8"
+                    >
+                      {slide.description}
+                    </Text>
+                  </Box>
+                </Flex>
+              </Box>
+            ))}
 
             {/* Navigation Arrows */}
             <IconButton
