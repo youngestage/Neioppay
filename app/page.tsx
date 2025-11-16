@@ -20,18 +20,34 @@ export default function Home() {
     <main className="min-h-screen bg-white">
       <Navbar />
       <Hero />
-      <CardsSection />
+      <div id="cards">
+        <CardsSection />
+      </div>
       <ProductOfferings />
-      <PersonalBanking />
+      <div id="personal">
+        <PersonalBanking />
+      </div>
       <LoanInvestment />
-      <BusinessBanking />
-      <POSCarousel />
+      <div id="business">
+        <BusinessBanking />
+      </div>
+      <div id="pos">
+        <POSCarousel />
+      </div>
       <Features />
-      <AboutUs />
-      <MeetTheTeam />
+      <div id="about">
+        <AboutUs />
+      </div>
+      <div id="company">
+        <MeetTheTeam />
+      </div>
       <MissionVision />
-      <CustomerSupport />
-      <Newsletter />
+      <div id="help">
+        <CustomerSupport />
+      </div>
+      <div id="open-account">
+        <Newsletter />
+      </div>
       <Footer />
       <WhatsAppFloat />
     </main>

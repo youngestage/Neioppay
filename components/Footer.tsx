@@ -1,8 +1,27 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
 import { CreativeDivider } from "./CreativeDivider";
 
 export const Footer: React.FC = () => {
+  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (href.startsWith("#")) {
+      e.preventDefault();
+      const element = document.querySelector(href);
+      if (element) {
+        const offset = 80; // Account for sticky navbar
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth",
+        });
+      }
+    }
+  };
+
   const quickLinks = [
     { label: "Open an account", href: "#open-account" },
     { label: "Help center", href: "#help" },
@@ -101,12 +120,13 @@ export const Footer: React.FC = () => {
             <ul className="space-y-2">
               {quickLinks.map((link) => (
                 <li key={link.href}>
-                  <Link
+                  <a
                     href={link.href}
-                    className="text-sm font-inter text-blue-very-dark hover:text-blue-dark transition-colors"
+                    onClick={(e) => handleLinkClick(e, link.href)}
+                    className="text-sm font-inter text-blue-very-dark hover:text-blue-dark transition-colors cursor-pointer"
                   >
                     {link.label}
-                  </Link>
+                  </a>
                 </li>
               ))}
             </ul>
@@ -120,12 +140,13 @@ export const Footer: React.FC = () => {
             <ul className="space-y-2">
               {companyLinks.map((link) => (
                 <li key={link.href}>
-                  <Link
+                  <a
                     href={link.href}
-                    className="text-sm font-inter text-blue-very-dark hover:text-blue-dark transition-colors"
+                    onClick={(e) => handleLinkClick(e, link.href)}
+                    className="text-sm font-inter text-blue-very-dark hover:text-blue-dark transition-colors cursor-pointer"
                   >
                     {link.label}
-                  </Link>
+                  </a>
                 </li>
               ))}
             </ul>
@@ -153,9 +174,9 @@ export const Footer: React.FC = () => {
                 <p className="text-xs text-blue-very-dark/60 mb-1">Address</p>
                 <div className="mb-2">
                   <p className="text-xs font-semibold text-blue-very-dark/80 mb-1">Nigeria</p>
-                  <p className="text-xs leading-relaxed">
-                    9b second powerline, opposite the Gen school Sango
-                  </p>
+                <p className="text-xs leading-relaxed">
+                  9b second powerline, opposite the Gen school Sango
+                </p>
                 </div>
                 <div>
                   <p className="text-xs font-semibold text-blue-very-dark/80 mb-1">Canada</p>

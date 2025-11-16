@@ -145,8 +145,8 @@ export const LoanInvestment: React.FC = () => {
                       boxShadow: "var(--chakra-shadows-md)",
                     },
                   }}
-                >
-                  Get Started
+              >
+                Get Started
                 </Box>
               </NextLink>
               <NextLink

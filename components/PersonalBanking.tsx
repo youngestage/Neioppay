@@ -111,8 +111,8 @@ export const PersonalBanking: React.FC = () => {
                       boxShadow: "var(--chakra-shadows-md)",
                     },
                   }}
-                >
-                  Download App
+              >
+                Download App
                 </Box>
               </NextLink>
               <NextLink
@@ -172,11 +172,11 @@ export const PersonalBanking: React.FC = () => {
             >
               <Image
                 src="/WhatsApp Image 2025-11-10 at 09.53.09.jpeg"
-                alt="Bills Payment App"
+              alt="Bills Payment App"
                 w="full"
                 h="auto"
                 objectFit="cover"
-              />
+            />
             </Box>
           </Box>
         </Grid>

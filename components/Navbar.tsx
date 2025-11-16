@@ -31,6 +31,24 @@ export const Navbar: React.FC = () => {
     { label: "Help Center", href: "#help" },
   ];
 
+  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (href.startsWith("#")) {
+      e.preventDefault();
+      const element = document.querySelector(href);
+      if (element) {
+        const offset = 80; // Account for sticky navbar
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth",
+        });
+      }
+      setIsMenuOpen(false);
+    }
+  };
+
   return (
     <Box
       as="nav"
@@ -61,14 +79,16 @@ export const Navbar: React.FC = () => {
             {menuItems.map((item) => (
               <Link
                 key={item.href}
-                asChild
+                href={item.href}
                 color="brand.veryDark"
                 fontFamily="var(--font-inter)"
                 fontWeight="medium"
                 _hover={{ color: "brand.dark" }}
                 transition="colors 0.2s"
+                onClick={(e) => handleLinkClick(e as any, item.href)}
+                css={{ cursor: "pointer" }}
               >
-                <NextLink href={item.href}>{item.label}</NextLink>
+                {item.label}
               </Link>
             ))}
             <Link
@@ -130,7 +150,7 @@ export const Navbar: React.FC = () => {
             {menuItems.map((item) => (
               <Link
                 key={item.href}
-                asChild
+                href={item.href}
                 color="brand.veryDark"
                 fontFamily="var(--font-inter)"
                 fontWeight="medium"
@@ -139,9 +159,13 @@ export const Navbar: React.FC = () => {
                 rounded="md"
                 transition="all 0.2s"
                 _hover={{ color: "brand.dark", bg: "blue.50" }}
-                onClick={() => setIsMenuOpen(false)}
+                onClick={(e) => {
+                  handleLinkClick(e as any, item.href);
+                  setIsMenuOpen(false);
+                }}
+                css={{ cursor: "pointer" }}
               >
-                <NextLink href={item.href}>{item.label}</NextLink>
+                {item.label}
               </Link>
             ))}
             <Link

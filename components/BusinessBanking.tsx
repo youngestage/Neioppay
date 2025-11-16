@@ -110,8 +110,8 @@ export const BusinessBanking: React.FC = () => {
                     boxShadow: "var(--chakra-shadows-md)",
                   },
                 }}
-              >
-                Open a Business Account
+            >
+              Open a Business Account
               </Box>
             </NextLink>
           </Box>
@@ -143,7 +143,7 @@ export const BusinessBanking: React.FC = () => {
                 w="full"
                 h="auto"
                 objectFit="cover"
-              />
+            />
             </Box>
           </Box>
         </Grid>

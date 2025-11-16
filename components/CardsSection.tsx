@@ -117,8 +117,8 @@ export const CardsSection: React.FC = () => {
                     boxShadow: "var(--chakra-shadows-lg)",
                   },
                 }}
-              >
-                Get A Personal Account
+          >
+            Get A Personal Account
               </Box>
             </NextLink>
           </Box>
