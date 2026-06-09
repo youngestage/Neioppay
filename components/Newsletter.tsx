@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { Box, Container, Heading, Text, Input, Button, Flex } from "@chakra-ui/react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import NextLink from "next/link";
 
 export const Newsletter: React.FC = () => {
   const [email, setEmail] = useState("");
@@ -58,11 +59,11 @@ export const Newsletter: React.FC = () => {
           >
             <Flex gap="4" direction={{ base: "column", sm: "row" }}>
               <Input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Enter your email"
-              required
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Enter your email"
+                required
                 flex="1"
                 px="6"
                 py="6"
@@ -77,9 +78,9 @@ export const Newsletter: React.FC = () => {
                     outlineOffset: "0",
                   },
                 }}
-            />
+              />
               <Button
-              type="submit"
+                type="submit"
                 px="10"
                 py="6"
                 bg="brand.light"
@@ -96,10 +97,24 @@ export const Newsletter: React.FC = () => {
                     boxShadow: "var(--chakra-shadows-lg)",
                   },
                 }}
-            >
-              Sign Up
+              >
+                Sign Up
               </Button>
             </Flex>
+            <Text
+              fontSize="xs"
+              color="white"
+              opacity="0.6"
+              mt="4"
+              textAlign="center"
+              fontFamily="var(--font-inter)"
+            >
+              By signing up, you agree to our{" "}
+              <NextLink href="/privacy" className="underline hover:text-white transition-colors">
+                Privacy Policy
+              </NextLink>
+              .
+            </Text>
           </Box>
         </Box>
       </Container>

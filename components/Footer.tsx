@@ -3,8 +3,12 @@
 import React from "react";
 import Link from "next/link";
 import { CreativeDivider } from "./CreativeDivider";
+import { usePathname } from "next/navigation";
 
 export const Footer: React.FC = () => {
+  const pathname = usePathname();
+  const isHomePage = pathname === "/";
+
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     if (href.startsWith("#")) {
       e.preventDefault();
@@ -23,15 +27,15 @@ export const Footer: React.FC = () => {
   };
 
   const quickLinks = [
-    { label: "Open an account", href: "#open-account" },
-    { label: "Help center", href: "#help" },
-    { label: "Get a POS terminal", href: "#pos" },
-    { label: "Privacy Policy", href: "#privacy" },
+    { label: "Open an account", href: isHomePage ? "#open-account" : "/#open-account" },
+    { label: "Help center", href: isHomePage ? "#help" : "/#help" },
+    { label: "Get a POS terminal", href: isHomePage ? "#pos" : "/#pos" },
+    { label: "Privacy Policy", href: "/privacy" },
   ];
 
   const companyLinks = [
-    { label: "Careers", href: "#careers" },
-    { label: "About us", href: "#about" },
+    { label: "Careers", href: isHomePage ? "#careers" : "/#careers" },
+    { label: "About us", href: isHomePage ? "#about" : "/#about" },
   ];
 
   return (

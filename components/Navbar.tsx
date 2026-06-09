@@ -3,10 +3,13 @@
 import React, { useState, useEffect } from "react";
 import NextLink from "next/link";
 import { Box, Flex, Link, Image, IconButton, Stack, Container } from "@chakra-ui/react";
+import { usePathname } from "next/navigation";
 
 export const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const pathname = usePathname();
+  const isHomePage = pathname === "/";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,10 +28,10 @@ export const Navbar: React.FC = () => {
   }, []);
 
   const menuItems = [
-    { label: "Personal", href: "#personal" },
-    { label: "Business", href: "#business" },
-    { label: "Company", href: "#company" },
-    { label: "Help Center", href: "#help" },
+    { label: "Personal", href: isHomePage ? "#personal" : "/#personal" },
+    { label: "Business", href: isHomePage ? "#business" : "/#business" },
+    { label: "Company", href: isHomePage ? "#company" : "/#company" },
+    { label: "Help Center", href: isHomePage ? "#help" : "/#help" },
   ];
 
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
