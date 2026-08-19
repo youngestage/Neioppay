@@ -97,7 +97,7 @@ export const CustomerSupport: React.FC = () => {
                 Contact Us
               </Text>
               <Link
-                href="tel:02013303300"
+                href="tel:+17098530967"
                 fontSize={{ base: "2xl", md: "3xl" }}
                 fontFamily="var(--font-poppins)"
                 fontWeight="bold"
@@ -108,7 +108,7 @@ export const CustomerSupport: React.FC = () => {
                 }}
                 transition="all 0.3s"
               >
-                02013303300
+                +17098530967
               </Link>
             </Box>
           </Box>

@@ -6,7 +6,7 @@ import { Link } from "@chakra-ui/react";
 export const WhatsAppFloat: React.FC = () => {
   return (
     <Link
-      href="https://wa.me/qr/JJAITT4SLSZOJ1"
+      href="https://wa.me/17098530967"
       target="_blank"
       rel="noopener noreferrer"
       position="fixed"

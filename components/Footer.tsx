@@ -164,8 +164,8 @@ export const Footer: React.FC = () => {
             <div className="space-y-3 text-sm font-inter text-blue-very-dark">
               <div>
                 <p className="text-xs text-blue-very-dark/60 mb-1">Phone</p>
-                <a href="tel:09087792935" className="hover:text-blue-dark transition-colors">
-                  09087792935
+                <a href="tel:+17098530967" className="hover:text-blue-dark transition-colors">
+                  +17098530967
                 </a>
               </div>
               <div>
