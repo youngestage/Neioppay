@@ -16,11 +16,6 @@ const teamMembers: TeamMember[] = [
     role: "CEO & Co-Founder",
     image: "/PHOTO-2025-11-10-13-19-26.jpg",
   },
-  {
-    name: "Dr Ifeanyi A.O",
-    role: "CTO & Co-Founder",
-    image: "/PHOTO-2025-11-14-19-24-12.jpg",
-  },
 ];
 
 const TeamMemberCard: React.FC<TeamMember & { index: number }> = ({ image, name, role, index }) => {
@@ -166,7 +161,7 @@ export const MeetTheTeam: React.FC = () => {
           </Text>
         </Box>
 
-        <SimpleGrid columns={{ base: 1, sm: 2 }} gap={{ base: 6, sm: 8 }} maxW="4xl" mx="auto">
+        <SimpleGrid columns={{ base: 1, sm: teamMembers.length > 1 ? 2 : 1 }} gap={{ base: 6, sm: 8 }} maxW={teamMembers.length === 1 ? "sm" : "4xl"} mx="auto">
           {teamMembers.map((member, index) => (
             <TeamMemberCard key={index} {...member} index={index} />
           ))}
