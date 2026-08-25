@@ -13,7 +13,7 @@ interface TeamMember {
 const teamMembers: TeamMember[] = [
   {
     name: "Ebehita Vincent Omoarebun",
-    role: "CEO & Co-Founder",
+    role: "CEO",
     image: "/PHOTO-2025-11-10-13-19-26.jpg",
   },
 ];
