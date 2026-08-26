@@ -14,7 +14,7 @@ const teamMembers: TeamMember[] = [
   {
     name: "Ebehita Vincent Omoarebun",
     role: "CEO",
-    image: "/PHOTO-2025-11-10-13-19-26.jpg",
+    image: "/neiopCEO.jpeg",
   },
 ];
 
@@ -22,26 +22,36 @@ const TeamMemberCard: React.FC<TeamMember & { index: number }> = ({ image, name,
   const { ref, isVisible } = useScrollAnimation();
 
   return (
-    <Box
+    <Flex
       ref={ref}
-      bg="white"
-      rounded="xl"
-      overflow="hidden"
-      border="1px solid"
-      borderColor="gray.100"
+      direction="column"
+      align="center"
+      textAlign="center"
       transition="all 0.3s"
       opacity={isVisible ? 1 : 0}
       transform={isVisible ? "translateY(0) scale(1)" : "translateY(30px) scale(0.95)"}
       style={{
         transition: `all 0.6s ease-out ${index * 0.1}s`,
       }}
-      _hover={{
-        shadow: "lg",
-        transform: "translateY(-4px) scale(1.02)",
-        borderColor: "brand.light",
-      }}
     >
-      <Box aspectRatio={1} bg="blue.50" display="flex" alignItems="center" justifyContent="center" overflow="hidden">
+      <Box
+        w={{ base: "56", sm: "64", md: "72" }}
+        h={{ base: "56", sm: "64", md: "72" }}
+        rounded="full"
+        overflow="hidden"
+        border="4px solid"
+        borderColor="white"
+        shadow="xl"
+        mb="6"
+        position="relative"
+        bg="blue.50"
+        transition="all 0.4s ease"
+        _hover={{
+          shadow: "2xl",
+          transform: "scale(1.03)",
+          borderColor: "brand.light",
+        }}
+      >
         {image ? (
           <Image src={image} alt={`${name} portrait`} w="full" h="full" objectFit="cover" />
         ) : (
@@ -61,10 +71,10 @@ const TeamMemberCard: React.FC<TeamMember & { index: number }> = ({ image, name,
           </Flex>
         )}
       </Box>
-      <Box p={{ base: 4, sm: 6 }} textAlign="center">
+      <Box textAlign="center">
         <Heading
           as="h3"
-          fontSize={{ base: "lg", sm: "xl" }}
+          fontSize={{ base: "xl", sm: "2xl" }}
           fontFamily="var(--font-poppins)"
           fontWeight="bold"
           color="brand.veryDark"
@@ -72,11 +82,17 @@ const TeamMemberCard: React.FC<TeamMember & { index: number }> = ({ image, name,
         >
           {name}
         </Heading>
-        <Text fontSize={{ base: "sm", sm: "base" }} fontFamily="var(--font-inter)" color="brand.light">
+        <Text
+          fontSize={{ base: "md", sm: "lg" }}
+          fontFamily="var(--font-inter)"
+          color="brand.light"
+          fontWeight="semibold"
+          letterSpacing="wide"
+        >
           {role}
         </Text>
       </Box>
-    </Box>
+    </Flex>
   );
 };
 
