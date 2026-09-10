@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { BusinessButton } from "@/components/BusinessButton";
 
 const features = [
@@ -11,7 +12,7 @@ const features = [
       "Open supported USD, GBP, and EUR accounts to receive international payments and manage foreign business funds.",
     cta: "Explore global accounts",
     href: "#accounts",
-    image: "/business/1.png",
+    image: "/business/1.webp",
     imageAlt: "Multi-currency business balances for NGN, EUR, and BTC",
     reverse: false,
   },
@@ -22,7 +23,7 @@ const features = [
       "Receive local and foreign payments and keep every transaction visible from your business dashboard.",
     cta: "Start getting paid",
     href: "#payments",
-    image: "/business/2.png",
+    image: "/business/2.webp",
     imageAlt: "Business payment transactions across multiple currencies",
     reverse: true,
   },
@@ -33,7 +34,7 @@ const features = [
       "Send supported currencies to international suppliers, contractors, and business partners from one account.",
     cta: "Start getting paid",
     href: "#payouts",
-    image: "/business/3.png",
+    image: "/business/3.webp",
     imageAlt: "International bank transfer payout preview",
     reverse: false,
   },
@@ -44,7 +45,7 @@ const features = [
       "View balances, incoming payments, outgoing transfers, and business activity without switching platforms.",
     cta: "View the dashboard",
     href: "#dashboard",
-    image: "/business/4.png",
+    image: "/business/4.webp",
     imageAlt: "Unified business dashboard with balances and transactions",
     reverse: true,
   },
@@ -55,7 +56,7 @@ const features = [
       "Manage supported crypto balances and conversions alongside your business currencies.",
     cta: "Explore crypto",
     href: "#crypto",
-    image: "/business/5.png",
+    image: "/business/5.webp",
     imageAlt: "Crypto payment notification and token balances",
     reverse: false,
   },
@@ -66,7 +67,7 @@ const features = [
       "Create virtual cards for approved business spending and manage them from your account.",
     cta: "Start getting paid",
     href: "#cards",
-    image: "/business/6.png",
+    image: "/business/6.webp",
     imageAlt: "Neioppay virtual business cards",
     reverse: true,
   },
@@ -87,11 +88,13 @@ export const BusinessFeaturesSection: React.FC = () => {
             }`}
           >
             <div className="w-full lg:w-[52%] xl:w-[54%] flex items-center justify-center">
-              <div className="relative w-full max-w-[560px] sm:max-w-[620px] lg:max-w-[680px] xl:max-w-[720px]">
-                <img
+              <div className="relative w-full max-w-[560px] sm:max-w-[620px] lg:max-w-[680px] xl:max-w-[720px] aspect-[1776/1260]">
+                <Image
                   src={feature.image}
                   alt={feature.imageAlt}
-                  className="w-full h-auto object-contain select-none pointer-events-none drop-shadow-[0_20px_48px_rgba(15,23,42,0.12)]"
+                  fill
+                  sizes="(max-width: 1024px) 90vw, 45vw"
+                  className="object-contain select-none pointer-events-none drop-shadow-[0_20px_48px_rgba(15,23,42,0.12)]"
                 />
               </div>
             </div>

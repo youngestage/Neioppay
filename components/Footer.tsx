@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import NextLink from "next/link";
 
 interface FooterLink {
@@ -52,10 +53,13 @@ export const Footer: React.FC = () => {
       <div className="w-full max-w-[1800px] mx-auto rounded-[28px] sm:rounded-[36px] lg:rounded-[44px] overflow-hidden relative bg-[#07132B] text-white">
         
         {/* Background Texture Image */}
-        <img
-          src="/footer.png"
-          alt="Footer Background Texture"
-          className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none select-none z-0"
+        <Image
+          src="/footer.webp"
+          alt=""
+          aria-hidden="true"
+          fill
+          sizes="(max-width: 1800px) 100vw, 1800px"
+          className="object-cover object-center pointer-events-none select-none z-0"
         />
 
         {/* Content Container */}
@@ -75,7 +79,7 @@ export const Footer: React.FC = () => {
                 aria-label="Get it on Google Play"
               >
                 <img
-                  src="/Link.png"
+                  src="/Link.webp"
                   alt="Get it on Google Play"
                   className="h-10 sm:h-12 w-auto object-contain drop-shadow-md"
                 />
@@ -86,7 +90,7 @@ export const Footer: React.FC = () => {
                 aria-label="Download on the App Store"
               >
                 <img
-                  src="/Link-1.png"
+                  src="/Link-1.webp"
                   alt="Download on the App Store"
                   className="h-10 sm:h-12 w-auto object-contain drop-shadow-md"
                 />

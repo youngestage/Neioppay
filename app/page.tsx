@@ -3,9 +3,7 @@ import { Hero } from "@/components/Hero";
 import { MoneyNeedsMarquee } from "@/components/MoneyNeedsMarquee";
 import { CryptoDashboardSection } from "@/components/CryptoDashboardSection";
 import { FeatureScrollSection } from "@/components/FeatureScrollSection";
-import { BusinessSection } from "@/components/BusinessSection";
 import { SecuritySection } from "@/components/SecuritySection";
-import { TestimonialsSection } from "@/components/TestimonialsSection";
 import { Footer } from "@/components/Footer";
 
 export default function Home() {
@@ -16,9 +14,7 @@ export default function Home() {
       <MoneyNeedsMarquee />
       <CryptoDashboardSection />
       <FeatureScrollSection />
-      <BusinessSection />
       <SecuritySection />
-      <TestimonialsSection />
       <Footer />
     </main>
   );

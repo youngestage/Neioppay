@@ -1,14 +1,15 @@
 "use client";
 
 import React, { useRef, useState, useEffect } from "react";
+import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 
 const featureCards = [
-  { id: 1, src: "/feature/Frame%203742.png", alt: "Borrow Money When You Need It" },
-  { id: 2, src: "/feature/Frame%203743.png", alt: "Move Money Fast" },
-  { id: 3, src: "/feature/Frame%203744.png", alt: "Global Bank Accounts" },
-  { id: 4, src: "/feature/Frame%203745.png", alt: "Open Free USD, GBP & EUR Accounts" },
-  { id: 5, src: "/feature/Frame%203746.png", alt: "Buy & Sell Crypto At Competitive Prices" },
+  { id: 1, src: "/feature/Frame 3742.webp", alt: "Borrow Money When You Need It" },
+  { id: 2, src: "/feature/Frame 3743.webp", alt: "Move Money Fast" },
+  { id: 3, src: "/feature/Frame 3744.webp", alt: "Global Bank Accounts" },
+  { id: 4, src: "/feature/Frame 3745.webp", alt: "Open Free USD, GBP & EUR Accounts" },
+  { id: 5, src: "/feature/Frame 3746.webp", alt: "Buy & Sell Crypto At Competitive Prices" },
 ];
 
 export const FeatureScrollSection: React.FC = () => {
@@ -95,14 +96,15 @@ export const FeatureScrollSection: React.FC = () => {
             {featureCards.map((card) => (
               <div
                 key={card.id}
-                className="flex-shrink-0 transition-transform duration-300 hover:scale-[1.02] aspect-[467/625] h-[420px] lg:h-[490px] xl:h-[550px] max-h-[64vh] flex items-center justify-center"
+                className="relative flex-shrink-0 transition-transform duration-300 hover:scale-[1.02] aspect-[467/625] h-[420px] lg:h-[490px] xl:h-[550px] max-h-[64vh]"
               >
-                <img
+                <Image
                   src={card.src}
                   alt={card.alt}
-                  className="w-full h-full object-contain pointer-events-none select-none drop-shadow-[0_20px_40px_rgba(15,23,42,0.12)]"
+                  fill
+                  sizes="(max-width: 768px) 85vw, 360px"
+                  className="object-contain pointer-events-none select-none drop-shadow-[0_20px_40px_rgba(15,23,42,0.12)]"
                   draggable={false}
-                  loading="eager"
                 />
               </div>
             ))}
@@ -126,13 +128,14 @@ export const FeatureScrollSection: React.FC = () => {
           {featureCards.map((card) => (
             <div
               key={card.id}
-              className="flex-shrink-0 snap-center w-[85vw] max-w-[360px] aspect-[467/625]"
+              className="relative flex-shrink-0 snap-center w-[85vw] max-w-[360px] aspect-[467/625]"
             >
-              <img
+              <Image
                 src={card.src}
                 alt={card.alt}
-                className="w-full h-full object-contain drop-shadow-[0_16px_32px_rgba(15,23,42,0.12)]"
-                loading="eager"
+                fill
+                sizes="85vw"
+                className="object-contain drop-shadow-[0_16px_32px_rgba(15,23,42,0.12)]"
               />
             </div>
           ))}
