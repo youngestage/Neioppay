@@ -5,6 +5,8 @@ const config = defineConfig({
     tokens: {
       colors: {
         brand: {
+          lime: { value: "#C3F84A" },
+          bg: { value: "#FCFCFC" },
           light: { value: "#3B82F6" },
           dark: { value: "#1E40AF" },
           veryDark: { value: "#0F172A" },
@@ -22,8 +24,8 @@ const config = defineConfig({
         },
       },
       fonts: {
-        heading: { value: "var(--font-poppins), sans-serif" },
-        body: { value: "var(--font-inter), sans-serif" },
+        heading: { value: "var(--font-mange), sans-serif" },
+        body: { value: "var(--font-montserrat), sans-serif" },
       },
     },
     semanticTokens: {
