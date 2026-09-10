@@ -17,8 +17,8 @@ export default function Home() {
       <CryptoDashboardSection />
       <FeatureScrollSection />
       <BusinessSection />
-      <TestimonialsSection />
       <SecuritySection />
+      <TestimonialsSection />
       <Footer />
     </main>
   );
