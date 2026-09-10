@@ -1,8 +1,7 @@
 "use client";
 
 import React from "react";
-
-
+import Image from "next/image";
 
 const phrases = [
   {
@@ -34,21 +33,15 @@ export const Hero: React.FC = () => {
 
   return (
     <section className="w-full px-4 sm:px-6 lg:px-8 xl:px-10 pt-1 pb-8 sm:pb-12">
-      {/* 
-        Hero Section Container:
-        - Uses heroimg.png as the complete visual background (cards, coins, gradient, noise)
-        - End-to-end container with rounded corners and screen-level height
-        - Text, CTA button, herocurrency.svg, and QR code card overlaid with pixel-perfect alignment
-      */}
       <div className="w-full max-w-[1800px] mx-auto rounded-[28px] sm:rounded-[36px] lg:rounded-[44px] overflow-hidden relative min-h-[640px] sm:min-h-[700px] lg:min-h-[760px] xl:min-h-[820px] flex flex-col justify-between">
-        
-        {/* Background Image exported from Figma */}
-        <img
-          src="/heroimg.png"
+        <Image
+          src="/heroimg.webp"
           alt="Neioppay Hero Background"
-          className="absolute inset-0 w-full h-full object-cover object-right pointer-events-none select-none z-0"
+          fill
+          priority
+          sizes="(max-width: 1800px) 100vw, 1800px"
+          className="object-cover object-right pointer-events-none select-none z-0"
         />
-
         {/* Top/Left Content Area: Typography & CTA */}
         <div className="relative z-10 pt-10 sm:pt-14 lg:pt-20 xl:pt-24 pl-6 sm:pl-10 md:pl-14 lg:pl-18 xl:pl-24 pr-6 max-w-[620px] xl:max-w-[700px]">
           {/* Main Headline in Mange font with animated cycle */}

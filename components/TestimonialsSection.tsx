@@ -58,7 +58,7 @@ export const TestimonialsSection: React.FC = () => {
         {/* Cards — left on desktop */}
         <div className="w-full lg:w-[58%] xl:w-[56%] overflow-hidden">
           <div
-            className="flex transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform"
+            className="flex transition-transform duration-500 ease-out will-change-transform"
             style={{
               gap: CARD_GAP_PX,
               transform: `translateX(-${activeIndex * (CARD_WIDTH_PX + CARD_GAP_PX)}px)`,
@@ -67,14 +67,14 @@ export const TestimonialsSection: React.FC = () => {
             {testimonials.map((item) => (
               <article
                 key={item.id}
-                className="relative shrink-0 rounded-[28px] sm:rounded-[32px] overflow-hidden"
+                className="relative shrink-0 rounded-[28px] sm:rounded-[32px] overflow-hidden shadow-[0_20px_50px_rgba(15,23,42,0.16)]"
                 style={{
                   width: CARD_WIDTH_PX,
                   aspectRatio: "1176 / 1608",
                 }}
               >
                 <img
-                  src="/testimonial.png"
+                  src="/testimonial.webp"
                   alt=""
                   aria-hidden="true"
                   className="absolute inset-0 w-full h-full object-cover pointer-events-none select-none"
@@ -85,7 +85,7 @@ export const TestimonialsSection: React.FC = () => {
                     {item.flags.map((flag, i) => (
                       <span
                         key={`${item.id}-${flag.src}`}
-                        className={`relative inline-flex h-11 w-11 sm:h-12 sm:w-12 items-center justify-center rounded-full overflow-hidden ${
+                        className={`relative inline-flex h-11 w-11 sm:h-12 sm:w-12 items-center justify-center rounded-full overflow-hidden ring-2 ring-[#0B1220] bg-white ${
                           i > 0 ? "-ml-3" : ""
                         }`}
                         style={{ zIndex: item.flags.length - i }}
@@ -100,10 +100,10 @@ export const TestimonialsSection: React.FC = () => {
                   </div>
 
                   <blockquote className="mt-8 sm:mt-10 font-montserrat font-medium text-white text-[17px] sm:text-lg leading-relaxed tracking-tight">
-                    &ldquo;{item.quote}
+                    &ldquo;{item.quote}&rdquo;
                   </blockquote>
 
-                  <p className="mt-auto pt-8 font-montserrat font-normal text-sm sm:text-[15px] text-white/70">
+                  <p className="mt-auto pt-8 font-montserrat font-normal text-sm sm:text-[15px] text-white/55">
                     {item.author}
                   </p>
                 </div>
@@ -118,7 +118,8 @@ export const TestimonialsSection: React.FC = () => {
             See what&apos;s possible.
           </h2>
           <p className="font-montserrat font-normal text-base sm:text-lg text-[#0F172A]/70 mt-5 sm:mt-6 leading-relaxed max-w-[420px]">
-            Real stories from people and businesses growing with Neiop Pay.
+            Real stories from people and businesses moving money across borders
+            with Neioppay.
           </p>
 
           <div className="mt-8 sm:mt-10 flex items-center gap-3">

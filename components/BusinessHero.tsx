@@ -1,26 +1,27 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 
 export const BusinessHero: React.FC = () => {
   return (
     <section className="w-full px-4 sm:px-6 lg:px-8 xl:px-10 pt-1 pb-8 sm:pb-12">
       <div className="relative w-full max-w-[1800px] mx-auto rounded-[28px] sm:rounded-[36px] lg:rounded-[44px] overflow-hidden aspect-[4145/2695] max-md:aspect-auto max-md:min-h-[720px] flex flex-col">
-        {/* Dark streak background + baked-in dashboard preview */}
-        <img
-          src="/buisnessbg.png"
+        <Image
+          src="/buisnessbg.webp"
           alt=""
           aria-hidden="true"
-          className="absolute inset-0 w-full h-full object-cover object-center max-md:object-[center_35%] pointer-events-none select-none z-0"
+          fill
+          priority
+          sizes="(max-width: 1800px) 100vw, 1800px"
+          className="object-cover object-center max-md:object-[center_35%] pointer-events-none select-none z-0"
         />
 
-        {/* Soft veil so baked-in faux nav in the asset stays quiet under site navbar */}
         <div
           className="absolute inset-x-0 top-0 h-16 sm:h-20 bg-gradient-to-b from-black/50 to-transparent z-[1] pointer-events-none"
           aria-hidden="true"
         />
 
-        {/* Centered copy + CTA over the upper dark area */}
         <div className="relative z-10 flex flex-col items-center text-center px-5 sm:px-8 pt-[9%] sm:pt-[8%] lg:pt-[7%] max-md:pt-16">
           <h1 className="font-mange font-bold text-white text-[2.5rem] sm:text-5xl md:text-6xl lg:text-[68px] xl:text-[76px] leading-[1.05] tracking-tight max-w-[920px]">
             <span className="block">Local business.</span>
@@ -50,7 +51,6 @@ export const BusinessHero: React.FC = () => {
           </a>
         </div>
 
-        {/* Lets the baked-in dashboard sit in the lower half of the frame */}
         <div className="relative z-10 flex-1" aria-hidden="true" />
       </div>
     </section>

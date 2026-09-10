@@ -44,7 +44,7 @@ export const metadata: Metadata = {
   title: "Neioppay - Bank Globally from one app",
   description: "Move your money around with full confidence. Send, receive, convert currency from anywhere in the world.",
   icons: {
-    icon: "/favicon.png",
+    icon: "/favicon.svg",
   },
 };
 
