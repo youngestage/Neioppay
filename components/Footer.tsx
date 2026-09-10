@@ -36,6 +36,7 @@ const lifestyleLinks: FooterLink[] = [
 const legalLinks: FooterLink[] = [
   { label: "Privacy policy", href: "/privacy" },
   { label: "Terms of service", href: "/terms" },
+  { label: "Delete account", href: "/delete-account" },
   { label: "Acceptable use policy", href: "#" },
   { label: "Help center", href: "#" },
   { label: "Video tutorials", href: "#" },
@@ -264,6 +265,12 @@ export const Footer: React.FC = () => {
               </NextLink>
               <NextLink href="/privacy" className="hover:text-white transition-colors">
                 Privacy
+              </NextLink>
+              <NextLink
+                href="/delete-account"
+                className="hover:text-white transition-colors"
+              >
+                Delete account
               </NextLink>
               <NextLink href="#" className="hover:text-white transition-colors">
                 Cookie Preferences
