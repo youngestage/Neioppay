@@ -34,8 +34,8 @@ const lifestyleLinks: FooterLink[] = [
 ];
 
 const legalLinks: FooterLink[] = [
-  { label: "Privacy policy", href: "#" },
-  { label: "Terms of service", href: "#" },
+  { label: "Privacy policy", href: "/privacy" },
+  { label: "Terms of service", href: "/terms" },
   { label: "Acceptable use policy", href: "#" },
   { label: "Help center", href: "#" },
   { label: "Video tutorials", href: "#" },
@@ -259,10 +259,10 @@ export const Footer: React.FC = () => {
           <div className="mt-16 sm:mt-20 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs sm:text-sm font-montserrat text-white/60">
             <p>© Neioppay 2026</p>
             <div className="flex items-center gap-6 sm:gap-8 text-white/70">
-              <NextLink href="#" className="hover:text-white transition-colors">
+              <NextLink href="/terms" className="hover:text-white transition-colors">
                 Terms
               </NextLink>
-              <NextLink href="#" className="hover:text-white transition-colors">
+              <NextLink href="/privacy" className="hover:text-white transition-colors">
                 Privacy
               </NextLink>
               <NextLink href="#" className="hover:text-white transition-colors">
