@@ -8,7 +8,7 @@ export type LegalSection = {
 };
 
 type LegalDocShellProps = {
-  eyebrow: string;
+  eyebrow?: string;
   title: string;
   lastUpdated: string;
   intro: React.ReactNode;
@@ -64,10 +64,16 @@ export const LegalDocShell: React.FC<LegalDocShellProps> = ({
       <section className="w-full bg-white px-4 sm:px-6 lg:px-8 xl:px-10 pt-10 sm:pt-14 lg:pt-16 pb-10 sm:pb-12 border-b border-[#E5E7EB]">
         <div className="w-full max-w-[1800px] mx-auto">
           <div className="max-w-4xl border-l border-[#D1D5DB] pl-6 sm:pl-8 lg:pl-10">
-            <p className="font-montserrat text-xs sm:text-sm font-semibold tracking-wide uppercase text-[#3B82F6]">
-              {eyebrow}
-            </p>
-            <h1 className="font-mange font-bold text-4xl sm:text-5xl md:text-6xl text-[#0F172A] tracking-tight leading-[1.08] mt-3">
+            {eyebrow ? (
+              <p className="font-montserrat text-xs sm:text-sm font-semibold tracking-wide uppercase text-[#3B82F6]">
+                {eyebrow}
+              </p>
+            ) : null}
+            <h1
+              className={`font-mange font-bold text-4xl sm:text-5xl md:text-6xl text-[#0F172A] tracking-tight leading-[1.08] ${
+                eyebrow ? "mt-3" : ""
+              }`}
+            >
               {title}
             </h1>
             <div
