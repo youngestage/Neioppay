@@ -14,9 +14,21 @@ const config: Config = {
   			foreground: 'hsl(var(--foreground))',
   			black: '#000000',
   			white: '#FFFFFF',
+  			'lime-accent': '#C3F84A',
+  			'off-white': '#FCFCFC',
   			'blue-light': '#3B82F6',
   			'blue-dark': '#1E40AF',
   			'blue-very-dark': '#0F172A',
+  			brand: {
+  				lime: '#C3F84A',
+  				bg: '#FCFCFC',
+  				blue: '#3B82F6',
+  				darkBlue: '#1E40AF',
+  				slate: '#0F172A',
+  				light: '#3B82F6',
+  				dark: '#1E40AF',
+  				veryDark: '#0F172A',
+  			},
   			card: {
   				DEFAULT: 'hsl(var(--card))',
   				foreground: 'hsl(var(--card-foreground))'
@@ -57,6 +69,14 @@ const config: Config = {
   			}
   		},
   		fontFamily: {
+  			mange: [
+  				'var(--font-mange)',
+  				'sans-serif'
+  			],
+  			montserrat: [
+  				'var(--font-montserrat)',
+  				'sans-serif'
+  			],
   			poppins: [
   				'var(--font-poppins)',
   				'sans-serif'

@@ -5,11 +5,15 @@
 @import url("https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,600,700&display=swap");
 
 body {
-  font-family: "Satoshi", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji", sans-serif;
+  font-family: var(--font-montserrat), system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: "Satoshi", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji", sans-serif;
+.font-mange {
+  font-family: var(--font-mange), system-ui, -apple-system, sans-serif;
+}
+
+.font-montserrat {
+  font-family: var(--font-montserrat), system-ui, -apple-system, sans-serif;
 }
 
 
@@ -108,13 +112,21 @@ h1, h2, h3, h4, h5, h6 {
   animation-delay: 4s;
 }
 
-/* MagicUI-inspired effects */
+/* Marquee animations */
 @keyframes marquee {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
 .animate-marquee {
-  animation: marquee 18s linear infinite;
+  animation: marquee 45s linear infinite;
+}
+
+@keyframes marquee-reverse {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+.animate-marquee-reverse {
+  animation: marquee-reverse 45s linear infinite;
 }
 
 @keyframes shine {
@@ -123,6 +135,35 @@ h1, h2, h3, h4, h5, h6 {
 }
 .animate-shine {
   animation: shine 1.6s linear infinite;
+}
+
+/* Hero phrase cycle animation */
+@keyframes phraseCycle {
+  0% {
+    opacity: 0;
+    transform: translateY(18px);
+    filter: blur(3px);
+  }
+  14% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+  86% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-18px);
+    filter: blur(3px);
+  }
+}
+
+.animate-phrase-cycle {
+  animation: phraseCycle 3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  will-change: transform, opacity, filter;
 }
 
 /* Scroll-triggered animations */
@@ -206,5 +247,20 @@ h1, h2, h3, h4, h5, h6 {
 
 .animate-delay-500 {
   animation-delay: 0.5s;
+}
+
+/* Business hero floating currency badges */
+@keyframes businessFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.animate-business-float {
+  animation: businessFloat 4.5s ease-in-out infinite;
 }
 

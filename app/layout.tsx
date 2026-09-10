@@ -1,7 +1,32 @@
 import type { Metadata } from "next";
-import { Poppins, Inter } from "next/font/google";
+import localFont from "next/font/local";
+import { Montserrat, Inter, Poppins } from "next/font/google";
 import "./globals.css";
 import { Provider } from "@/components/ui/provider";
+
+const mange = localFont({
+  src: [
+    {
+      path: "../public/fonts/Mange.otf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/Mange.ttf",
+      weight: "700",
+      style: "normal",
+    },
+  ],
+  variable: "--font-mange",
+  display: "swap",
+});
+
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800"],
+  variable: "--font-montserrat",
+  display: "swap",
+});
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -16,8 +41,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Neiop Pay - Your Money Partner",
-  description: "Make the best of your money and take your place in the world",
+  title: "Neioppay - Bank Globally from one app",
+  description: "Move your money around with full confidence. Send, receive, convert currency from anywhere in the world.",
   icons: {
     icon: "/favicon.png",
   },
@@ -30,7 +55,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${poppins.variable} ${inter.variable}`}>
+      <body className={`${montserrat.variable} ${mange.variable} ${poppins.variable} ${inter.variable} font-montserrat antialiased`}>
         <Provider>{children}</Provider>
       </body>
     </html>

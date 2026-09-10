@@ -1,224 +1,272 @@
 "use client";
 
 import React from "react";
-import Link from "next/link";
-import { CreativeDivider } from "./CreativeDivider";
-import { usePathname } from "next/navigation";
+import NextLink from "next/link";
+
+interface FooterLink {
+  label: string;
+  href: string;
+}
+
+const productLinks: FooterLink[] = [
+  { label: "Money transfer", href: "#" },
+  { label: "Virtual cards", href: "#" },
+  { label: "Currency exchange", href: "#" },
+  { label: "Foreign accounts", href: "#" },
+  { label: "Pouch", href: "#" },
+  { label: "Lifestyle", href: "#" },
+];
+
+const companyLinks: FooterLink[] = [
+  { label: "About us", href: "#" },
+  { label: "Careers", href: "#" },
+  { label: "Blog", href: "#" },
+  { label: "Press", href: "#" },
+  { label: "Contact", href: "#" },
+];
+
+const lifestyleLinks: FooterLink[] = [
+  { label: "For freelancers", href: "#" },
+  { label: "For digital nomads", href: "#" },
+  { label: "For travellers", href: "#" },
+  { label: "Join our community", href: "#" },
+];
+
+const legalLinks: FooterLink[] = [
+  { label: "Privacy policy", href: "#" },
+  { label: "Terms of service", href: "#" },
+  { label: "Acceptable use policy", href: "#" },
+  { label: "Help center", href: "#" },
+  { label: "Video tutorials", href: "#" },
+  { label: "FAQ", href: "#" },
+];
 
 export const Footer: React.FC = () => {
-  const pathname = usePathname();
-  const isHomePage = pathname === "/";
-
-  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    if (href.startsWith("#")) {
-      e.preventDefault();
-      const element = document.querySelector(href);
-      if (element) {
-        const offset = 80; // Account for sticky navbar
-        const elementPosition = element.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.pageYOffset - offset;
-
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: "smooth",
-        });
-      }
-    }
-  };
-
-  const quickLinks = [
-    { label: "Open an account", href: isHomePage ? "#open-account" : "/#open-account" },
-    { label: "Help center", href: isHomePage ? "#help" : "/#help" },
-    { label: "Get a POS terminal", href: isHomePage ? "#pos" : "/#pos" },
-    { label: "Privacy Policy", href: "/privacy" },
-  ];
-
-  const companyLinks = [
-    { label: "Careers", href: isHomePage ? "#careers" : "/#careers" },
-    { label: "About us", href: isHomePage ? "#about" : "/#about" },
-  ];
-
   return (
-    <footer className="bg-white relative">
-      {/* Creative Divider at Top */}
-      <CreativeDivider color="#3B82F6" flip />
+    <footer className="w-full px-4 sm:px-6 lg:px-8 xl:px-10 pb-8 sm:pb-12 pt-4">
+      {/* 
+        Footer Container Card:
+        - Framed rounded card with deep navy background and 3D wave texture
+        - Matches Hero section container curvature and padding
+      */}
+      <div className="w-full max-w-[1800px] mx-auto rounded-[28px] sm:rounded-[36px] lg:rounded-[44px] overflow-hidden relative bg-[#07132B] text-white">
+        
+        {/* Background Texture Image */}
+        <img
+          src="/footer.png"
+          alt="Footer Background Texture"
+          className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none select-none z-0"
+        />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 mb-8">
-          {/* Brand Section */}
-          <div>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/logo.png"
-              alt="Neiop Pay Logo"
-              className="h-10 w-auto mb-4"
-            />
-            <p className="text-sm font-inter text-blue-very-dark mb-4">
-              Your Money Partner
-            </p>
-            <p className="text-xs font-inter text-blue-very-dark/70 mb-4">
-              Sign up for our weekly newsletter for fun, finance and more
-            </p>
+        {/* Content Container */}
+        <div className="relative z-10 px-6 sm:px-10 md:px-14 lg:px-20 xl:px-24 pt-16 sm:pt-20 lg:pt-28 pb-10 sm:pb-14">
+          
+          {/* Top Headline Section */}
+          <div className="text-center max-w-3xl mx-auto">
+            <h2 className="font-mange font-bold text-3xl sm:text-5xl md:text-6xl lg:text-[64px] text-white tracking-tight leading-[1.1]">
+              Global Banking <br /> at your fingertips
+            </h2>
 
-            <a
-              href="https://play.google.com/store/apps/details?id=com.neiop.app"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Get it on Google Play"
-              className="inline-block mb-4"
-            >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
-                alt="Get it on Google Play"
-                className="h-10 w-auto"
-              />
-            </a>
-
-            {/* Social Media Links */}
-            <div className="flex items-center gap-3">
-              <Link
-                href="#facebook"
-                className="text-blue-very-dark hover:text-blue-light transition-colors"
-                aria-label="Facebook"
+            {/* App Store & Google Play Badges */}
+            <div className="flex items-center justify-center gap-3 sm:gap-4 mt-8 sm:mt-10">
+              <a
+                href="#download-google-play"
+                className="inline-block transition-transform duration-200 hover:scale-[1.03] active:scale-100"
+                aria-label="Get it on Google Play"
               >
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
-                </svg>
-              </Link>
-              <Link
-                href="#twitter"
-                className="text-blue-very-dark hover:text-blue-light transition-colors"
-                aria-label="Twitter"
+                <img
+                  src="/Link.png"
+                  alt="Get it on Google Play"
+                  className="h-10 sm:h-12 w-auto object-contain drop-shadow-md"
+                />
+              </a>
+              <a
+                href="#download-app-store"
+                className="inline-block transition-transform duration-200 hover:scale-[1.03] active:scale-100"
+                aria-label="Download on the App Store"
               >
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
-                </svg>
-              </Link>
-              <Link
-                href="#linkedin"
-                className="text-blue-very-dark hover:text-blue-light transition-colors"
-                aria-label="LinkedIn"
-              >
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-                </svg>
-              </Link>
-              <Link
-                href="#instagram"
-                className="text-blue-very-dark hover:text-blue-light transition-colors"
-                aria-label="Instagram"
-              >
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-                </svg>
-              </Link>
+                <img
+                  src="/Link-1.png"
+                  alt="Download on the App Store"
+                  className="h-10 sm:h-12 w-auto object-contain drop-shadow-md"
+                />
+              </a>
             </div>
           </div>
 
-          {/* Quick Links */}
-          <div>
-            <h4 className="font-poppins font-semibold text-blue-very-dark mb-4">
-              Quick Links
-            </h4>
-            <ul className="space-y-2">
-              {quickLinks.map((link) => (
-                <li key={link.href}>
-                  <a
-                    href={link.href}
-                    onClick={(e) => handleLinkClick(e, link.href)}
-                    className="text-sm font-inter text-blue-very-dark hover:text-blue-dark transition-colors cursor-pointer"
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
+          {/* Links Grid Section */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-8 sm:gap-10 lg:gap-8 mt-16 sm:mt-24 lg:mt-32">
+            
+            {/* Column 1: CONTACT US */}
+            <div className="col-span-2 sm:col-span-3 lg:col-span-1 mb-2 lg:mb-0">
+              <h3 className="font-montserrat font-semibold text-xs sm:text-[13px] uppercase tracking-wider text-white/50 mb-3 sm:mb-4">
+                CONTACT US
+              </h3>
+              <a
+                href="mailto:support@neioppay.net"
+                className="font-montserrat text-sm sm:text-[15px] text-[#3B82F6] hover:text-[#60A5FA] transition-colors block mb-5"
+              >
+                support@neioppay.net
+              </a>
 
-          {/* Company */}
-          <div>
-            <h4 className="font-poppins font-semibold text-blue-very-dark mb-4">
-              Company
-            </h4>
-            <ul className="space-y-2">
-              {companyLinks.map((link) => (
-                <li key={link.href}>
-                  <a
-                    href={link.href}
-                    onClick={(e) => handleLinkClick(e, link.href)}
-                    className="text-sm font-inter text-blue-very-dark hover:text-blue-dark transition-colors cursor-pointer"
+              {/* Social Icons */}
+              <div className="flex items-center gap-2.5">
+                {/* Instagram */}
+                <a
+                  href="https://instagram.com/neioppay"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Instagram"
+                  className="w-[34px] h-[34px] rounded-[8px] border border-[#363F51] flex items-center justify-center bg-[#07132B]/40 hover:border-white/50 hover:bg-white/10 transition-all text-white/60 hover:text-white group"
+                >
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                   >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                  </svg>
+                </a>
 
-          {/* Contact */}
-          <div>
-            <h4 className="font-poppins font-semibold text-blue-very-dark mb-4">
-              Contact Us
-            </h4>
-            <div className="space-y-3 text-sm font-inter text-blue-very-dark">
-              <div>
-                <p className="text-xs text-blue-very-dark/60 mb-1">Phone</p>
-                <a href="tel:+17098530967" className="hover:text-blue-dark transition-colors">
-                  +17098530967
+                {/* YouTube */}
+                <a
+                  href="https://youtube.com/@neioppay"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="YouTube"
+                  className="w-[34px] h-[34px] rounded-[8px] border border-[#363F51] flex items-center justify-center bg-[#07132B]/40 hover:border-white/50 hover:bg-white/10 transition-all text-white/60 hover:text-white group"
+                >
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                  </svg>
                 </a>
-              </div>
-              <div>
-                <p className="text-xs text-blue-very-dark/60 mb-1">Email</p>
-                <a href="mailto:support@neiopay.com" className="hover:text-blue-dark transition-colors break-all">
-                  support@neiopay.com
+
+                {/* X (formerly Twitter) */}
+                <a
+                  href="https://x.com/neioppay"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="X (formerly Twitter)"
+                  className="w-[34px] h-[34px] rounded-[8px] border border-[#363F51] flex items-center justify-center bg-[#07132B]/40 hover:border-white/50 hover:bg-white/10 transition-all text-white/60 hover:text-white group"
+                >
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                  </svg>
                 </a>
-              </div>
-              <div>
-                <p className="text-xs text-blue-very-dark/60 mb-1">Address</p>
-                <div className="mb-2">
-                  <p className="text-xs font-semibold text-blue-very-dark/80 mb-1">Nigeria</p>
-                <p className="text-xs leading-relaxed">
-                  9b second powerline, opposite the Gen school Sango
-                </p>
-                </div>
-                <div>
-                  <p className="text-xs font-semibold text-blue-very-dark/80 mb-1">Canada</p>
-                  <p className="text-xs leading-relaxed">
-                    241 Elizabeth Avenue St. John&apos;s Province Newfoundland and Labrador
-                  </p>
-                </div>
               </div>
             </div>
-          </div>
-        </div>
 
-        {/* Bottom Section */}
-        <div className="border-t border-gray-200 pt-8 mt-8 relative">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <p className="text-xs font-inter text-blue-very-dark/70 text-center md:text-left">
-              Services are offered by Neioppay and it&apos;s powered by Asset Matrix Microfinance Bank.
-            </p>
-            <p className="text-xs font-inter text-blue-very-dark/70">
-              © {new Date().getFullYear()} Neiop Pay. All rights reserved.
-            </p>
+            {/* Column 2: PRODUCTS */}
+            <div>
+              <h3 className="font-montserrat font-semibold text-xs sm:text-[13px] uppercase tracking-wider text-white/50 mb-3 sm:mb-4">
+                PRODUCTS
+              </h3>
+              <ul className="space-y-2.5 sm:space-y-3">
+                {productLinks.map((item) => (
+                  <li key={item.label}>
+                    <NextLink
+                      href={item.href}
+                      className="font-montserrat text-sm sm:text-[15px] text-white/80 hover:text-white transition-colors"
+                    >
+                      {item.label}
+                    </NextLink>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Column 3: COMPANY */}
+            <div>
+              <h3 className="font-montserrat font-semibold text-xs sm:text-[13px] uppercase tracking-wider text-white/50 mb-3 sm:mb-4">
+                COMPANY
+              </h3>
+              <ul className="space-y-2.5 sm:space-y-3">
+                {companyLinks.map((item) => (
+                  <li key={item.label}>
+                    <NextLink
+                      href={item.href}
+                      className="font-montserrat text-sm sm:text-[15px] text-white/80 hover:text-white transition-colors"
+                    >
+                      {item.label}
+                    </NextLink>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Column 4: LIFESTYLE */}
+            <div>
+              <h3 className="font-montserrat font-semibold text-xs sm:text-[13px] uppercase tracking-wider text-white/50 mb-3 sm:mb-4">
+                LIFESTYLE
+              </h3>
+              <ul className="space-y-2.5 sm:space-y-3">
+                {lifestyleLinks.map((item) => (
+                  <li key={item.label}>
+                    <NextLink
+                      href={item.href}
+                      className="font-montserrat text-sm sm:text-[15px] text-white/80 hover:text-white transition-colors"
+                    >
+                      {item.label}
+                    </NextLink>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Column 5: LEGAL & SUPPORT */}
+            <div>
+              <h3 className="font-montserrat font-semibold text-xs sm:text-[13px] uppercase tracking-wider text-white/50 mb-3 sm:mb-4">
+                LEGAL & SUPPORT
+              </h3>
+              <ul className="space-y-2.5 sm:space-y-3">
+                {legalLinks.map((item) => (
+                  <li key={item.label}>
+                    <NextLink
+                      href={item.href}
+                      className="font-montserrat text-sm sm:text-[15px] text-white/80 hover:text-white transition-colors"
+                    >
+                      {item.label}
+                    </NextLink>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
           </div>
 
-          {/* Small CBN and NDIC badges in corner */}
-          <div className="absolute bottom-4 right-4 flex items-center gap-3">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/cbn.svg"
-              alt="CBN Logo"
-              className="h-6 w-auto opacity-70"
-            />
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/ndic.png"
-              alt="NDIC Logo"
-              className="h-6 w-auto opacity-70"
-            />
+          {/* Bottom Bar: Copyright & Legal Policies */}
+          <div className="mt-16 sm:mt-20 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs sm:text-sm font-montserrat text-white/60">
+            <p>© Neioppay 2026</p>
+            <div className="flex items-center gap-6 sm:gap-8 text-white/70">
+              <NextLink href="#" className="hover:text-white transition-colors">
+                Terms
+              </NextLink>
+              <NextLink href="#" className="hover:text-white transition-colors">
+                Privacy
+              </NextLink>
+              <NextLink href="#" className="hover:text-white transition-colors">
+                Cookie Preferences
+              </NextLink>
+            </div>
           </div>
+
         </div>
       </div>
     </footer>
