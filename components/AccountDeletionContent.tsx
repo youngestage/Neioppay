@@ -45,7 +45,6 @@ export const AccountDeletionContent: React.FC = () => {
 
   return (
     <LegalDocShell
-      eyebrow="Neioppay · Google Play"
       title="Delete Your Account"
       lastUpdated="September 10, 2026"
       sections={sections}
