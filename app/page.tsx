@@ -6,6 +6,7 @@ import { FeatureScrollSection } from "@/components/FeatureScrollSection";
 import { BusinessSection } from "@/components/BusinessSection";
 import { TestimonialsSection } from "@/components/TestimonialsSection";
 import { SecuritySection } from "@/components/SecuritySection";
+import { FaqSection } from "@/components/FaqSection";
 import { Footer } from "@/components/Footer";
 
 export default function Home() {
@@ -19,6 +20,7 @@ export default function Home() {
       <BusinessSection />
       <SecuritySection />
       <TestimonialsSection />
+      <FaqSection />
       <Footer />
     </main>
   );

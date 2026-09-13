@@ -9,38 +9,17 @@ interface FooterLink {
   href: string;
 }
 
-const productLinks: FooterLink[] = [
-  { label: "Money transfer", href: "#" },
-  { label: "Virtual cards", href: "#" },
-  { label: "Currency exchange", href: "#" },
-  { label: "Foreign accounts", href: "#" },
-  { label: "Pouch", href: "#" },
-  { label: "Lifestyle", href: "#" },
-];
-
 const companyLinks: FooterLink[] = [
-  { label: "About us", href: "#" },
-  { label: "Careers", href: "#" },
-  { label: "Blog", href: "#" },
-  { label: "Press", href: "#" },
-  { label: "Contact", href: "#" },
-];
-
-const lifestyleLinks: FooterLink[] = [
-  { label: "For freelancers", href: "#" },
-  { label: "For digital nomads", href: "#" },
-  { label: "For travellers", href: "#" },
-  { label: "Join our community", href: "#" },
-];
-
-const legalLinks: FooterLink[] = [
-  { label: "Privacy policy", href: "/privacy" },
+  { label: "FAQ", href: "/faq" },
   { label: "Terms of service", href: "/terms" },
+  { label: "Privacy policy", href: "/privacy" },
+  { label: "AML policy", href: "/aml" },
   { label: "Delete account", href: "/delete-account" },
-  { label: "Acceptable use policy", href: "#" },
-  { label: "Help center", href: "#" },
-  { label: "Video tutorials", href: "#" },
-  { label: "FAQ", href: "#" },
+];
+
+const supportLinks: FooterLink[] = [
+  { label: "Help center", href: "/help" },
+  { label: "Contact us", href: "/contact" },
 ];
 
 export const Footer: React.FC = () => {
@@ -100,12 +79,12 @@ export const Footer: React.FC = () => {
           </div>
 
           {/* Links Grid Section */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-8 sm:gap-10 lg:gap-8 mt-16 sm:mt-24 lg:mt-32">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-10 sm:gap-12 lg:gap-16 mt-16 sm:mt-24 lg:mt-32">
             
-            {/* Column 1: CONTACT US */}
-            <div className="col-span-2 sm:col-span-3 lg:col-span-1 mb-2 lg:mb-0">
+            {/* Column 1: CONTACT */}
+            <div>
               <h3 className="font-montserrat font-semibold text-xs sm:text-[13px] uppercase tracking-wider text-white/50 mb-3 sm:mb-4">
-                CONTACT US
+                CONTACT
               </h3>
               <a
                 href="mailto:support@neioppay.net"
@@ -178,26 +157,7 @@ export const Footer: React.FC = () => {
               </div>
             </div>
 
-            {/* Column 2: PRODUCTS */}
-            <div>
-              <h3 className="font-montserrat font-semibold text-xs sm:text-[13px] uppercase tracking-wider text-white/50 mb-3 sm:mb-4">
-                PRODUCTS
-              </h3>
-              <ul className="space-y-2.5 sm:space-y-3">
-                {productLinks.map((item) => (
-                  <li key={item.label}>
-                    <NextLink
-                      href={item.href}
-                      className="font-montserrat text-sm sm:text-[15px] text-white/80 hover:text-white transition-colors"
-                    >
-                      {item.label}
-                    </NextLink>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Column 3: COMPANY */}
+            {/* Column 2: COMPANY */}
             <div>
               <h3 className="font-montserrat font-semibold text-xs sm:text-[13px] uppercase tracking-wider text-white/50 mb-3 sm:mb-4">
                 COMPANY
@@ -216,32 +176,13 @@ export const Footer: React.FC = () => {
               </ul>
             </div>
 
-            {/* Column 4: LIFESTYLE */}
+            {/* Column 3: SUPPORT */}
             <div>
               <h3 className="font-montserrat font-semibold text-xs sm:text-[13px] uppercase tracking-wider text-white/50 mb-3 sm:mb-4">
-                LIFESTYLE
+                SUPPORT
               </h3>
               <ul className="space-y-2.5 sm:space-y-3">
-                {lifestyleLinks.map((item) => (
-                  <li key={item.label}>
-                    <NextLink
-                      href={item.href}
-                      className="font-montserrat text-sm sm:text-[15px] text-white/80 hover:text-white transition-colors"
-                    >
-                      {item.label}
-                    </NextLink>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Column 5: LEGAL & SUPPORT */}
-            <div>
-              <h3 className="font-montserrat font-semibold text-xs sm:text-[13px] uppercase tracking-wider text-white/50 mb-3 sm:mb-4">
-                LEGAL & SUPPORT
-              </h3>
-              <ul className="space-y-2.5 sm:space-y-3">
-                {legalLinks.map((item) => (
+                {supportLinks.map((item) => (
                   <li key={item.label}>
                     <NextLink
                       href={item.href}
@@ -259,21 +200,21 @@ export const Footer: React.FC = () => {
           {/* Bottom Bar: Copyright & Legal Policies */}
           <div className="mt-16 sm:mt-20 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs sm:text-sm font-montserrat text-white/60">
             <p>© Neioppay 2026</p>
-            <div className="flex items-center gap-6 sm:gap-8 text-white/70">
+            <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 sm:gap-x-8 text-white/70">
               <NextLink href="/terms" className="hover:text-white transition-colors">
                 Terms
               </NextLink>
               <NextLink href="/privacy" className="hover:text-white transition-colors">
                 Privacy
               </NextLink>
+              <NextLink href="/aml" className="hover:text-white transition-colors">
+                AML
+              </NextLink>
               <NextLink
                 href="/delete-account"
                 className="hover:text-white transition-colors"
               >
                 Delete account
-              </NextLink>
-              <NextLink href="#" className="hover:text-white transition-colors">
-                Cookie Preferences
               </NextLink>
             </div>
           </div>
