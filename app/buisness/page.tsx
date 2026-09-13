@@ -4,6 +4,7 @@ import { BusinessHero } from "@/components/BusinessHero";
 import { TrustedBySection } from "@/components/TrustedBySection";
 import { BusinessFeaturesSection } from "@/components/BusinessFeaturesSection";
 import { TestimonialsSection } from "@/components/TestimonialsSection";
+import { FaqSection } from "@/components/FaqSection";
 import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
@@ -20,6 +21,7 @@ export default function BuisnessPage() {
       <TrustedBySection />
       <BusinessFeaturesSection />
       <TestimonialsSection />
+      <FaqSection />
       <Footer />
     </main>
   );
